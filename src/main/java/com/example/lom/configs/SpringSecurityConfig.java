@@ -26,7 +26,13 @@ public class SpringSecurityConfig {
                         .requestMatchers("/delete/**").hasRole("ADMIN")
                         .requestMatchers("/create/**").hasAuthority("CREATOR")
                         .anyRequest().authenticated())
+//                  .formLogin((form) -> form
+//                          .loginPage("/login")
+//                          .loginProcessingUrl("/login")
+//                          .defaultSuccessUrl("/index")
+//                          .permitAll());
                 .formLogin(Customizer.withDefaults());
+
         return http.build();
     }
 

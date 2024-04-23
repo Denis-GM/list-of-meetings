@@ -18,12 +18,12 @@ public class MeetingService {
         this.meetingRepository = meetingRepository;
 
 //        this.meetingRepository.saveAll(List.of(
-//                new Meeting("Настольная игра 1", "Описание 1", new Date(), "Екатеринбург",
-//                        6, 2),
-//                new Meeting("Настольная игра 2", "Описание 2", new Date(), "Екатеринбург",
-//                        4, 1),
+//                new Meeting("Настольная игра 1", "Описание 1", new Date(),
+//                        "Екатеринбург", 6),
+//                new Meeting("Настольная игра 2", "Описание 2", new Date(),
+//                        "Екатеринбург", 4),
 //                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",
-//                        12, 10)
+//                        12)
 //        ));
     }
 

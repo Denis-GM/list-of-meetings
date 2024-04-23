@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    max-width: 1080px;
+    width: 70%;
+    margin: 30px auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

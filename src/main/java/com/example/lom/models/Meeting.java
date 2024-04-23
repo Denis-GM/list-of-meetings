@@ -25,6 +25,18 @@ public class Meeting {
     private int tags = 0;
     private  int recordedUsers = 0;
 
+    public Meeting() {
+
+    }
+
+    public Meeting(String name, String description, Date date, String place, int totalNumberSeats) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.place = place;
+        this.totalNumberSeats = totalNumberSeats;
+    }
+
     public String getId() {
         return this.id.toString();
     }
@@ -47,5 +59,37 @@ public class Meeting {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public int getTotalNumberSeats() {
+        return totalNumberSeats;
+    }
+
+    public void setTotalNumberSeats(int totalNumberSeats) {
+        this.totalNumberSeats = totalNumberSeats;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
     }
 }

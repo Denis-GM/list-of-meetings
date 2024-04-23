@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <title>LOM</title>
+</head>
+<body>
+    <div th:include="layout :: copy"></div>
+    <div class="content">
+        <div>
+            <h2>Все мероприятия</h2>
+            <div><a href="/api/meetings">get json</a></div>
+            <ul>
+                <th:block th:each="meeting : ${meetings}">
+                    <li>
+                        <span th:utext="${meeting.name}"></span>
+                        <span th:utext="${meeting.date}"></span>
+                        <span th:utext="${meeting.place}"></span>
+                        <span th:utext="${meeting.totalNumberSeats}"></span>
+                        <a th:href="@{/api/meetings/__${meeting.id}__}">click</a>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+        <div>
+            <h2>Пользователи</h2>
+            <div><a>click</a></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</html>

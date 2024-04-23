@@ -3,20 +3,18 @@ package com.example.lom.controllers;
 import com.example.lom.models.Meeting;
 import com.example.lom.services.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/api/meetings")
-public class MeetingController {
+public class MeetingApiController {
     private final MeetingService meetingService;
 
     @Autowired
-    public MeetingController(MeetingService meetingService) {
+    public MeetingApiController(MeetingService meetingService) {
         this.meetingService = meetingService;
     }
 
