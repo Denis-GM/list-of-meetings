@@ -22,4 +22,12 @@ public class Tag {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Tag() {
+
+    }
+
+    public Tag(String tagName) {
+        this.name = tagName;
+    }
 }

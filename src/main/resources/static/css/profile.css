@@ -1,0 +1,649 @@
+.page-6 .rectangle-43 {
+ border-r-[10px_solid_#F8E9A1]
+ border-b-[10px_solid_#F8E9A1]
+ bg-[#F76D6D]
+ absolute
+ left-[67px]
+ top-[0px]
+ w-[124px]
+ h-[132px]
+}
+
+.page-6 .lom {
+ absolute
+ left-[87.8px]
+ top-[-1px]
+ text-center
+ break-words
+ font-['Jura']
+ font-normal
+ text-[70px]
+ leading-[0.92]
+ text-[#FFFFFF]
+}
+
+.page-6 .rectangle-44 {
+ rounded-[2px]
+ bg-[#F8E9A1]
+ m-[0_191px_14px_191px]
+ self-start
+ w-[9px]
+ h-[69px]
+}
+
+.page-6 .container {
+ m-[18px_23px_0_0]
+ inline-block
+ w-[426.2px]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[50px]
+ leading-[0.92]
+ text-[#000000]
+}
+
+.page-6 .container-1 {
+ m-[18px_0_0_0]
+ inline-block
+ break-words
+ font-['Jura']
+ font-normal
+ text-[50px]
+ leading-[0.92]
+ text-[#000000]
+}
+
+.page-6 .container-2 {
+ relative
+ m-[0_0_41px_0]
+ flex
+ flex-row
+ justify-center
+ box-sizing-border
+}
+
+.page-6 .container-3 {
+ break-words
+ font-['Jura']
+ font-semibold
+ text-[25px]
+ leading-[0.92]
+ text-[#FFFFFF]
+}
+
+.page-6 .container-4 {
+ shadow-[0px_1px_16.7px_0px_rgba(0,0,0,0.25)]
+ rounded-[20px]
+ bg-[#FFFFFF]
+ absolute
+ top-[172px]
+ right-[310px]
+ flex
+ flex-row
+ justify-center
+ p-[13px_0_14px_6.1px]
+ w-[248px]
+ box-sizing-border
+}
+
+.page-6 .container-5 {
+ break-words
+ font-['Jura']
+ font-semibold
+ text-[25px]
+ leading-[0.92]
+ text-[#444444]
+}
+
+.container-6 {
+ bg-[#FFFFFF]
+ flex
+ flex-col
+ items-center
+ p-[0_0_54px_0]
+ w-[1920px]
+ box-sizing-border
+}
+
+.page-6 .container-7 {
+ m-[2px_0_1px_0]
+ inline-block
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#444444]
+}
+
+.page-6 .container-8 {
+ m-[3px_0_0_0]
+ inline-block
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#444444]
+}
+
+.page-6 .container-9 {
+ m-[0_0_3px_0]
+ inline-block
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#444444]
+}
+
+.page-6 .container-10 {
+ m-[1px_14px_2px_0]
+ inline-block
+ w-[196px]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#444444]
+}
+
+.page-6 .line-3 {
+ bg-[#2E2E2E]
+ m-[0_0_0_1171.8px]
+ w-[118px]
+ h-[1px]
+}
+
+.page-6 .container {
+ rounded-br-[30px]
+ bg-[#FFFFFF]
+ relative
+ flex
+ flex-row
+ justify-center
+ self-start
+ p-[24px_0_25px_0]
+ w-[372px]
+ box-sizing-border
+}
+
+.page-6 .container-1 {
+ m-[0_0_100px_92.7px]
+ flex
+ flex-row
+ justify-between
+ w-[1162px]
+ box-sizing-border
+}
+
+.page-6 .container-11 {
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#FFFFFF]
+}
+
+.page-6 .group-15 {
+ rounded-[24px]
+ bg-[#A8D1E7]
+ relative
+ m-[0_37px_3px_0]
+ flex
+ flex-col
+ items-center
+ p-[1px_0_15px_0]
+ w-[298px]
+ h-[fit-content]
+ box-sizing-border
+}
+
+.page-6 .image-3 {
+ rounded-t-[24px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ w-[298px]
+ h-[166px]
+}
+
+.page-6 .container-12 {
+ m-[0_1px_0_0]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[23px]
+ text-[#24315E]
+}
+
+.page-6 .rectangle-50 {
+ rounded-[2.5px]
+ bg-[#24315E]
+ absolute
+ left-[50%]
+ bottom-[56px]
+ translate-x-[-50%]
+ w-[60px]
+ h-[3px]
+}
+
+.page-6 .container-13 {
+ text-center
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#24315E]
+}
+
+.page-6 .group-16 {
+ rounded-[24px]
+ bg-[#A8D1E7]
+ relative
+ m-[3px_36px_0_0]
+ flex
+ flex-col
+ items-center
+ p-[1px_0_15px_0]
+ w-[298px]
+ h-[fit-content]
+ box-sizing-border
+}
+
+.page-6 .image-31 {
+ rounded-t-[24px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ w-[298px]
+ h-[166px]
+}
+
+.page-6 .container-14 {
+ m-[0_1px_0_0]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[23px]
+ text-[#24315E]
+}
+
+.page-6 .rectangle-501 {
+ rounded-[2.5px]
+ bg-[#24315E]
+ absolute
+ left-[50%]
+ bottom-[56px]
+ translate-x-[-50%]
+ w-[60px]
+ h-[3px]
+}
+
+.page-6 .container-15 {
+ text-center
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#24315E]
+}
+
+.page-6 .group-17 {
+ rounded-[24px]
+ bg-[#A8D1E7]
+ relative
+ m-[2px_32px_1px_0]
+ flex
+ flex-col
+ items-center
+ p-[1px_0_15px_0]
+ w-[298px]
+ h-[fit-content]
+ box-sizing-border
+}
+
+.page-6 .image-32 {
+ rounded-t-[24px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ w-[298px]
+ h-[166px]
+}
+
+.page-6 .container-16 {
+ m-[0_1px_0_0]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[23px]
+ text-[#24315E]
+}
+
+.page-6 .rectangle-502 {
+ rounded-[2.5px]
+ bg-[#24315E]
+ absolute
+ left-[50%]
+ bottom-[56px]
+ translate-x-[-50%]
+ w-[60px]
+ h-[3px]
+}
+
+.page-6 .container-17 {
+ text-center
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#24315E]
+}
+
+.page-6 .group-18 {
+ rounded-[50px]
+ bg-[#F76D6D]
+ relative
+ m-[0_0_49px_0]
+ flex
+ flex-row
+ justify-center
+ p-[16px_0_16px_0]
+ w-[706px]
+ box-sizing-border
+}
+
+.page-6 .group-19 {
+ rounded-[50px]
+ bg-[#F76D6D]
+ relative
+ m-[0_2px_49px_0]
+ flex
+ flex-row
+ justify-center
+ p-[16px_0_16px_0]
+ w-[706px]
+ box-sizing-border
+}
+
+.page-6 .container-18 {
+ break-words
+ font-['Jura']
+ font-normal
+ text-[30px]
+ leading-[0.92]
+ text-[#FFFFFF]
+}
+
+.page-6 .group-21 {
+ rounded-[23px]
+ bg-[#A8D1E7]
+ relative
+ flex
+ flex-col
+ p-[0.4px_0_26.9px_0.4px]
+ w-[420.4px]
+ box-sizing-border
+}
+
+.page-6 .image-33 {
+ rounded-t-[23px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ m-[0_0_1px_0]
+ w-[420px]
+ h-[152px]
+}
+
+.page-6 .container-19 {
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#000000]
+}
+
+.page-6 .group-13 {
+ rounded-[23px]
+ bg-[#A8D1E7]
+ relative
+ flex
+ flex-col
+ p-[0.4px_0_26.9px_0.4px]
+ w-[420.4px]
+ box-sizing-border
+}
+
+.page-6 .image-34 {
+ rounded-t-[23px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ m-[0_0_1px_0]
+ w-[420px]
+ h-[152px]
+}
+
+.page-6 .container-20 {
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#000000]
+}
+
+.page-6 .group-211 {
+ rounded-[23px]
+ bg-[#A8D1E7]
+ relative
+ flex
+ flex-col
+ p-[0.4px_0_26.9px_0.4px]
+ w-[420.4px]
+ box-sizing-border
+}
+
+.page-6 .image-35 {
+ rounded-t-[23px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ m-[0_0_1px_0]
+ w-[420px]
+ h-[152px]
+}
+
+.page-6 .container-21 {
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#000000]
+}
+
+.page-6 .group-22 {
+ rounded-[24px]
+ bg-[#A8D1E7]
+ relative
+ m-[1px_0_2px_0]
+ flex
+ flex-col
+ items-center
+ p-[1px_0_15px_0]
+ w-[298px]
+ h-[fit-content]
+ box-sizing-border
+}
+
+.page-6 .image-36 {
+ rounded-t-[24px]
+ bg-[url('../assets/images/image3.png')]
+ bg-[50%_50%]
+ bg-cover
+ bg-no-repeat
+ w-[298px]
+ h-[166px]
+}
+
+.page-6 .container-22 {
+ m-[0_1px_0_0]
+ break-words
+ font-['Jura']
+ font-normal
+ text-[23px]
+ text-[#24315E]
+}
+
+.page-6 .rectangle-503 {
+ rounded-[2.5px]
+ bg-[#24315E]
+ absolute
+ left-[50%]
+ bottom-[56px]
+ translate-x-[-50%]
+ w-[60px]
+ h-[3px]
+}
+
+.page-6 .container-23 {
+ text-center
+ break-words
+ font-['Jura']
+ font-normal
+ text-[25px]
+ leading-[0.92]
+ text-[#24315E]
+}
+
+.page-6 .container-2 {
+ m-[0_0_0_3px]
+ flex
+ flex-row
+ w-[1297px]
+ box-sizing-border
+}
+
+.page-6 .container-3 {
+ rounded-t-[20px]
+ bg-[#FFFFFF]
+ relative
+ m-[0_13px_16px_13px]
+ flex
+ flex-row
+ justify-center
+ p-[8px_1px_13px_0]
+ w-[272px]
+ box-sizing-border
+}
+
+.page-6 .container-4 {
+ rounded-br-[30px]
+ bg-[#FFFFFF]
+ relative
+ flex
+ flex-row
+ justify-center
+ self-start
+ p-[21.6px_0_27.4px_11.1px]
+ w-[372px]
+ box-sizing-border
+}
+
+.page-6 .container-5 {
+ rounded-t-[20px]
+ bg-[#FFFFFF]
+ relative
+ m-[0_13px_16px_13px]
+ flex
+ flex-row
+ justify-center
+ p-[8px_1px_13px_0]
+ w-[272px]
+ box-sizing-border
+}
+
+.page-6 .container-6 {
+ rounded-t-[20px]
+ bg-[#FFFFFF]
+ relative
+ m-[0_13px_16px_13px]
+ flex
+ flex-row
+ justify-center
+ p-[8px_1px_13px_0]
+ w-[272px]
+ box-sizing-border
+}
+
+.page-6 .container-7 {
+ m-[0_0_100.7px_0.4px]
+ flex
+ flex-row
+ gap-[0_19.6px]
+ w-[1300.4px]
+ box-sizing-border
+}
+
+.page-6 .container-8 {
+ m-[0_0_4px_0]
+ flex
+ flex-row
+ justify-between
+ w-[1299.8px]
+ box-sizing-border
+}
+
+.page-6 .container-9 {
+ rounded-t-[20px]
+ bg-[#FFFFFF]
+ relative
+ m-[0_13px_16px_13px]
+ flex
+ flex-row
+ justify-center
+ p-[8px_1px_13px_0]
+ w-[272px]
+ box-sizing-border
+}
+
+.page-6 .container-10 {
+ rounded-br-[30px]
+ bg-[#FFFFFF]
+ relative
+ flex
+ flex-row
+ justify-center
+ self-start
+ p-[24px_0_25px_0]
+ w-[372px]
+ box-sizing-border
+}
+
+.page-6 .container-11 {
+ bg-[#F8E9A1]
+ relative
+ flex
+ flex-col
+ items-center
+ p-[23px_0_14px_0]
+ w-[1923px]
+ box-sizing-border
+}

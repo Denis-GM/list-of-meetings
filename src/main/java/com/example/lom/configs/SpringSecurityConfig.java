@@ -22,10 +22,11 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/registration", "/login", "/logout").permitAll()
-                        .requestMatchers("/delete/**").hasRole("ADMIN")
-                        .requestMatchers("/create/**").hasAuthority("CREATOR")
-                        .anyRequest().authenticated())
+//                        .requestMatchers("/registration", "/login", "/logout").permitAll()
+//                        .requestMatchers("/delete/**").hasRole("ADMIN")
+//                        .requestMatchers("/create/**").hasAuthority("CREATOR")
+//                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
 //                  .formLogin((form) -> form
 //                          .loginPage("/login")
 //                          .loginProcessingUrl("/login")
