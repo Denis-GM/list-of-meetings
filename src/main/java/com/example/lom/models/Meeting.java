@@ -21,7 +21,6 @@ public class Meeting {
     private int totalNumberSeats = 0;
     private int availableSeats = 0;
 
-    //  Изменить формат у tags и recordedUsers
     private int tags = 0;
     private  int recordedUsers = 0;
 

@@ -12,14 +12,14 @@ public class Record {
     @GeneratedValue
     private UUID id;
 
-    private Date dateRecord;
+    private Date dateRecord = new Date();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mg_user_id")
     private User user;
 
     public Record() {
-//        this.dateRecord = new Date();
+
     }
 
     public Record(User user) {

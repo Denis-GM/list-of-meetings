@@ -23,7 +23,7 @@ public class MeetingApiController {
         return meetingService.getMeetings();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     Optional<Meeting> getMeetingById(@PathVariable String id) {
         return this.meetingService.getMeetingById(id);
     }

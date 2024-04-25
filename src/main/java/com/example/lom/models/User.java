@@ -1,10 +1,8 @@
 package com.example.lom.models;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+
+import java.util.*;
 
 @Entity
 @Table(name = "mg_user")
@@ -18,19 +16,16 @@ public class User {
     private String lastName;
     private String phone;
     private String email;
-    private Meeting[] meetingsRecords;
+//    private Meeting[] meetingsRecords;
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id")) @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Record> recordsList;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Record> records;
+    private Set<Record> records = new HashSet<>();
 
     public User() {
 
@@ -62,7 +57,7 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String firstName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -78,8 +73,8 @@ public class User {
         return roles;
     }
 
-    public void setRoles(Set<Role> singleton) {
-        roles.addAll(singleton);
+    public void setRoles(Set<Role> roles) {
+        this.roles.addAll(roles);
     }
 
     public boolean getActive() {
@@ -94,8 +89,8 @@ public class User {
         return records;
     }
 
-    public void setRecord(Set<Record> singleton) {
-        this.records.addAll(singleton);
+    public void setRecord(Record record) {
+        this.records.add(record);
     }
 
     public String getPhone() {
@@ -112,11 +107,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Meeting[] getMeetingsRecords() { return meetingsRecords; }
-
-    public void setMeetingsRecords(Meeting[] meetingsRecords) {
-        this.meetingsRecords = meetingsRecords;
     }
 }

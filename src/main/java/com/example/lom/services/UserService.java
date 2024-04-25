@@ -11,9 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +28,11 @@ public class UserService implements UserDetailsService {
         User myUser = userRepository.findByUsername(username);
         return new org.springframework.security.core.userdetails.User(myUser.getUsername(),
                 myUser.getPassword(), mapRolesToAthorities(myUser.getRoles()));
+    }
+
+    public User findUserById(String userId) {
+        Optional<User> userFromDb = userRepository.findById(UUID.fromString(userId));
+        return userFromDb.orElse(new User());
     }
 
     private List<? extends GrantedAuthority> mapRolesToAthorities(Set<Role> roles)

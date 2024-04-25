@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+    <link th:href="@{/css/meeting.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <title>LOM</title>
+</head>
+<body>
+    <div th:include="layout :: copy"></div>
+    <div class="content">
+        <div>
+            <h2>Мероприятие</h2>
+            <ul class="list-reset">
+                <li th:text="${meeting.name}"></li>
+                <li th:text="${meeting.date}"></li>
+                <li th:text="${meeting.place}"></li>
+                <li>Количество мест: <span th:text="${meeting.totalNumberSeats}"></span></li>
+                <li><a th:href="@{/api/records/__${meeting.id}__}">Записаться</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
