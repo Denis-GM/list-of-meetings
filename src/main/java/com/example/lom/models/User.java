@@ -1,8 +1,10 @@
 package com.example.lom.models;
 
 import jakarta.persistence.*;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "mg_user")
@@ -25,7 +27,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Record> records = new HashSet<>();
+    private Set<Record> records;
 
     public User() {
 
@@ -73,8 +75,8 @@ public class User {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles.addAll(roles);
+    public void setRoles(Set<Role> singleton) {
+        roles.addAll(singleton);
     }
 
     public boolean getActive() {
@@ -89,8 +91,8 @@ public class User {
         return records;
     }
 
-    public void setRecord(Record record) {
-        this.records.add(record);
+    public void setRecord(Set<Record> singleton) {
+        this.records.addAll(singleton);
     }
 
     public String getPhone() {
@@ -108,4 +110,10 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    public Meeting[] getMeetingsRecords() { return meetingsRecords; }
+
+//    public void setMeetingsRecords(Meeting[] meetingsRecords) {
+//        this.meetingsRecords = meetingsRecords;
+//    }
 }

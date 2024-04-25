@@ -4,6 +4,7 @@
     height: 65px;
 
     background-color: #F8E9A1;
+    font-family: Jura;
 }
 
 .nav a {
@@ -55,6 +56,8 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-size: 25px;
 }
 
 .nav__left-block {
@@ -66,7 +69,14 @@ a:hover {
 
 .nav__right-block {
     position: relative;
-    width: 20%;
+    width: 25%;
     display: flex;
     justify-content: space-between;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url("../fonts/Jura-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }
