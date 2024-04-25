@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -30,5 +34,15 @@ public class UserController {
         model.addAttribute("user", currentUser);
 
         return "profile";
+    }
+
+    @PostMapping("/profile/edit")
+    public String editProfile(@RequestParam("userId") UUID userId,
+                              @RequestParam("lastName") String lastName,
+                              @RequestParam("firstName") String firstName,
+                              @RequestParam("phone") String phone,
+                              Model model) {
+        userService.updateUser(userId, lastName, firstName, phone);
+        return "redirect:/profile";
     }
 }

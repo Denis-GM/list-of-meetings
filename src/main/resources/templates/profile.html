@@ -14,19 +14,29 @@
             <div>
                 <div id="name-info">
                     <span id="user-last-name" th:text="${user.lastName}">Фамилия</span>
+                    <input type="text" id="last-name-input" style="display: none;">
                 </div>
                 <div>
                     <span id="user-first-name" th:text="${user.firstName}">Имя</span>
+                    <input type="text" id="first-name-input" style="display: none;">
                 </div>
             </div>
 
             <div>
                 <span id="user-phone" th:text="${user.phone}">Телефон</span>
+                <input type="text" id="phone-input" style="display: none;">
             </div>
 
-            <button id="edit-button">Редактировать</button>
+            <button id="edit-button" onclick="editProfile()">Редактировать</button>
+            <button id="save-button" style="display: none;">Сохранить</button>
         </div>
 
+        <form id="edit-form" action="/profile/edit" method="post" style="display: none;">
+            <input type="text" id="last-name-form" name="lastName">
+            <input type="text" id="first-name-form" name="firstName">
+            <input type="text" id="phone-form" name="phone">
+            <input type="submit" value="Сохранить">
+        </form>
 
         <div class="rectangle">
             <h2>Записи</h2>
@@ -75,4 +85,5 @@
         </div>
     </div>
 </body>
+<script type="text/javascript" th:src="@{/js/profile.js}"></script>
 </html>

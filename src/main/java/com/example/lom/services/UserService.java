@@ -52,4 +52,17 @@ public class UserService implements UserDetailsService {
         user.setActive(true);
         userRepository.save(user);
     }
+
+    public void updateUser(UUID userId, String lastName, String firstName, String phone) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setLastName(lastName);
+            user.setFirstName(firstName);
+            user.setPhone(phone);
+            userRepository.save(user);
+        } else {
+            throw new RuntimeException("Не найден пользователь со следующим ID: " + userId);
+        }
+    }
 }
