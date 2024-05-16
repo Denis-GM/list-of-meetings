@@ -31,6 +31,11 @@ public class UserService implements UserDetailsService {
                 myUser.getPassword(), mapRolesToAthorities(myUser.getRoles()));
     }
 
+    public User findUserByUsername(String username) throws UsernameNotFoundException
+    {
+        return userRepository.findByUsername(username);
+    }
+
     public User findUserById(String userId) {
         Optional<User> userFromDb = userRepository.findById(UUID.fromString(userId));
         return userFromDb.orElse(new User());

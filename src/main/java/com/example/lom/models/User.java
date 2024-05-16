@@ -2,7 +2,6 @@ package com.example.lom.models;
 
 import jakarta.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,16 +17,21 @@ public class User {
     private String lastName;
     private String phone;
     private String email;
-//    private Meeting[] meetingsRecords;
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id")) @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
+    // Записи пользователя на мероприятия
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Record> records;
+    private Set<Subscription> subscriptions;
+
+    // Организованные (созданные) пользователем мероприятия
+    @OneToMany(mappedBy = "organizer", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Meeting> createdMeetings;
 
     public User() {
 
@@ -87,14 +91,6 @@ public class User {
         this.active = b;
     }
 
-    public Set<Record> getRecords() {
-        return records;
-    }
-
-    public void setRecord(Set<Record> singleton) {
-        this.records.addAll(singleton);
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -111,9 +107,19 @@ public class User {
         this.email = email;
     }
 
-//    public Meeting[] getMeetingsRecords() { return meetingsRecords; }
+    public Set<Subscription> getRecords() {
+        return subscriptions;
+    }
 
-//    public void setMeetingsRecords(Meeting[] meetingsRecords) {
-//        this.meetingsRecords = meetingsRecords;
-//    }
+    public void setRecords(Set<Subscription> subscriptions) {
+        this.subscriptions.addAll(subscriptions);
+    }
+
+    public Set<Meeting> getCreatedMeetings() {
+        return createdMeetings;
+    }
+
+    public void setCreatedMeetings(Set<Meeting> createdMeetings) {
+        this.createdMeetings.addAll(createdMeetings);
+    }
 }

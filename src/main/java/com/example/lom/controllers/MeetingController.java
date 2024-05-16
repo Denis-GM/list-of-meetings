@@ -10,11 +10,11 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/meetings")
-public class MeetingApiController {
+public class MeetingController {
     private final MeetingService meetingService;
 
     @Autowired
-    public MeetingApiController(MeetingService meetingService) {
+    public MeetingController(MeetingService meetingService) {
         this.meetingService = meetingService;
     }
 

@@ -1,11 +1,9 @@
 package com.example.lom.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -19,21 +17,29 @@ public class Meeting {
     private Date date;
     private String place;
     private int totalNumberSeats = 0;
-    private int availableSeats = 0;
+    private int availableSeats = 10;
 
-    private int tags = 0;
-    private  int recordedUsers = 0;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="organizer")
+    private User organizer;
+
+    @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Subscription> subscriptions;
+
+//    private int tags = 0;
+//    private  int recordedUsers = 0;
 
     public Meeting() {
 
     }
 
-    public Meeting(String name, String description, Date date, String place, int totalNumberSeats) {
+    public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User organizer) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.place = place;
         this.totalNumberSeats = totalNumberSeats;
+        this.organizer = organizer;
     }
 
     public String getId() {
@@ -90,5 +96,13 @@ public class Meeting {
 
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
+    }
+
+    public User getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(User organizer) {
+        this.organizer = organizer;
     }
 }

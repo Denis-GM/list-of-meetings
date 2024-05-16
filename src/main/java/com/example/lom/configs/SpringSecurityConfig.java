@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 @Configuration
@@ -20,20 +23,39 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> authz
+//        http
+//                .authorizeHttpRequests((authz) -> authz
 //                        .requestMatchers("/registration", "/login", "/logout").permitAll()
 //                        .requestMatchers("/delete/**").hasRole("ADMIN")
 //                        .requestMatchers("/create/**").hasAuthority("CREATOR")
 //                        .anyRequest().authenticated())
-                        .anyRequest().permitAll())
-//                  .formLogin((form) -> form
+////                        .anyRequest().permitAll())
+//                .formLogin((form) -> form
 //                          .loginPage("/login")
 //                          .loginProcessingUrl("/login")
-//                          .defaultSuccessUrl("/index")
-//                          .permitAll());
-                .formLogin(Customizer.withDefaults());
-
+//                          .defaultSuccessUrl("/")
+//                          .permitAll())
+//                .logout()
+//                .logoutSuccessUrl("/login.html");
+////                .formLogin(Customizer.withDefaults());
+//
+//        return http.build();
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                        "/registration**",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**").permitAll()
+                .anyRequest().authenticated());
+        http.formLogin(fL -> fL.loginPage("/login").permitAll());
+        http.logout(lOut -> {
+            lOut.invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login?logout")
+                    .permitAll();
+        });
+        http.httpBasic(withDefaults());
         return http.build();
     }
 

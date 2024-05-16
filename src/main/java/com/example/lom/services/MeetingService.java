@@ -1,6 +1,7 @@
 package com.example.lom.services;
 
 import com.example.lom.models.Meeting;
+import com.example.lom.models.User;
 import com.example.lom.repositories.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,18 +13,22 @@ import java.util.*;
 @Service
 public class MeetingService {
     private final MeetingRepository meetingRepository;
+    private final UserService userService;
 
     @Autowired
-    public MeetingService(MeetingRepository meetingRepository) {
+    public MeetingService(MeetingRepository meetingRepository, UserService userService) {
         this.meetingRepository = meetingRepository;
+        this.userService = userService;
 
+        User user = this.userService.findUserById("c6428aa4-4c16-4b7a-8cbe-a250e95227e0");
+        var userByUsername = this.userService.loadUserByUsername("denis");
 //        this.meetingRepository.saveAll(List.of(
 //                new Meeting("Настольная игра 1", "Описание 1", new Date(),
-//                        "Екатеринбург", 6),
+//                        "Екатеринбург", 6, user),
 //                new Meeting("Настольная игра 2", "Описание 2", new Date(),
-//                        "Екатеринбург", 4),
+//                        "Екатеринбург", 4, user),
 //                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",
-//                        12)
+//                        12, user)
 //        ));
     }
 

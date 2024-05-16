@@ -29,14 +29,33 @@ public class TemplateController {
 
     @RequestMapping(value = { "/meetings/{id}" }, method = RequestMethod.GET)
     public String meetingPage(Model model, @PathVariable String id) {
-        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);;
+        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);
         model.addAttribute("meeting", meeting);
         return "meeting";
+    }
+
+    @RequestMapping(value = { "/meetings/create" }, method = RequestMethod.GET)
+    public String meetingCreatePage(Model model) {
+        model.addAttribute("meeting", new Meeting());
+        return "createMeeting";
+    }
+
+    @RequestMapping(value = { "/meetings/edit/{id}" }, method = RequestMethod.GET)
+    public String meetingEditPage(Model model, @PathVariable String id) {
+        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);;
+        model.addAttribute("meeting", meeting);
+        return "createMeeting";
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(Model model){
         model.addAttribute("message", "static message");
         return "login";
+    }
+
+    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+    public String logout(Model model){
+        model.addAttribute("message", "static message");
+        return "logout";
     }
 }
