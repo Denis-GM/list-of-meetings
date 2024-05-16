@@ -16,12 +16,14 @@ public class Meeting {
     private String description;
     private Date date;
     private String place;
-    private int totalNumberSeats = 0;
+    private int totalNumberSeats = 10;
     private int availableSeats = 10;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="organizer")
-    private User organizer;
+//    @JoinColumn(name="organizer")
+//    private User organizer;
+    @JoinColumn(name = "creator_id")
+    private User creator;
 
     @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Subscription> subscriptions;
@@ -98,11 +100,8 @@ public class Meeting {
         this.availableSeats = availableSeats;
     }
 
-    public User getOrganizer() {
-        return organizer;
-    }
+    public User getCreator() { return creator; }
 
-    public void setOrganizer(User organizer) {
-        this.organizer = organizer;
-    }
+    public void setCreator(User creator) { this.creator = creator; }
+
 }

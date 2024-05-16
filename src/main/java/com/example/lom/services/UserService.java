@@ -23,12 +23,19 @@ public class UserService implements UserDetailsService {
     public UserService(UserRepository  userRepository) {
         this.userRepository = userRepository;
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
         User myUser = userRepository.findByUsername(username);
-        return new org.springframework.security.core.userdetails.User(myUser.getUsername(),
-                myUser.getPassword(), mapRolesToAthorities(myUser.getRoles()));
+        if (myUser == null) {
+            throw new UsernameNotFoundException("Не найден пользователь с именем: " + username);
+        }
+        return new org.springframework.security.core.userdetails.User(
+                myUser.getUsername(),
+                myUser.getPassword(),
+                mapRolesToAuthorities(myUser.getRoles())
+        );
     }
 
     public User findUserByUsername(String username) throws UsernameNotFoundException
@@ -41,7 +48,7 @@ public class UserService implements UserDetailsService {
         return userFromDb.orElse(new User());
     }
 
-    private List<? extends GrantedAuthority> mapRolesToAthorities(Set<Role> roles)
+    private List<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles)
     {
         return roles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + r.name())).collect(Collectors.toList());
     }
@@ -58,16 +65,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public void updateUser(UUID userId, String lastName, String firstName, String phone) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            user.setLastName(lastName);
-            user.setFirstName(firstName);
-            user.setPhone(phone);
-            userRepository.save(user);
-        } else {
-            throw new RuntimeException("Не найден пользователь со следующим ID: " + userId);
-        }
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
 }

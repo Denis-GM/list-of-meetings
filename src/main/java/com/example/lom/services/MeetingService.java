@@ -59,4 +59,8 @@ public class MeetingService {
     public void deleteMeeting(String id) {
         this.meetingRepository.deleteById(UUID.fromString(id));
     }
+
+    public List<Meeting> getMeetingsByCreator(User creator) {
+        return meetingRepository.findByCreator(creator);
+    }
 }

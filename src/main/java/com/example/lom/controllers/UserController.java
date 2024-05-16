@@ -20,29 +20,4 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
-
-    @GetMapping("/profile")
-    public String userProfile(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        String username = userDetails.getUsername();
-
-        User currentUser = userRepository.findByUsername(username);
-
-        model.addAttribute("user", currentUser);
-
-        return "profile";
-    }
-
-    @PostMapping("/profile/edit")
-    public String editProfile(@RequestParam("userId") UUID userId,
-                              @RequestParam("lastName") String lastName,
-                              @RequestParam("firstName") String firstName,
-                              @RequestParam("phone") String phone,
-                              Model model) {
-        userService.updateUser(userId, lastName, firstName, phone);
-        return "redirect:/profile";
-    }
 }
