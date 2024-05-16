@@ -1,13 +1,12 @@
 package com.example.lom.controllers;
 
 import com.example.lom.models.Meeting;
-import com.example.lom.models.Record;
+import com.example.lom.models.Subscription;
 import com.example.lom.models.User;
 import com.example.lom.repositories.UserRepository;
 import com.example.lom.services.UserService;
 import com.example.lom.services.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -15,9 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 @Controller
 public class TemplateController {
@@ -70,12 +67,12 @@ public class TemplateController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser  = userRepository.findByUsername(authentication.getName());
 
-        List<Meeting> userMeetings = meetingService.getMeetingsByCreator(currentUser );
-        Set<Record> userRecords = currentUser .getRecords();
+        List<Meeting> userMeetings = meetingService.getMeetingsByCreator(currentUser);
+        Set<Subscription> userSubscriptions = currentUser.getSubscriptions();
 
         model.addAttribute("user", currentUser );
         model.addAttribute("userMeetings", userMeetings);
-        model.addAttribute("userRecords", userRecords);
+        model.addAttribute("userSubscriptions", userSubscriptions);
 
         return "profile";
     }

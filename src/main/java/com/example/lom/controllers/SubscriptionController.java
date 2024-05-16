@@ -29,7 +29,7 @@ public class SubscriptionController {
 
 //  Добавить проверку на повторение
     @RequestMapping(value = "/{meetingId}", method={RequestMethod.POST, RequestMethod.GET})
-    Subscription postRecord(@PathVariable String meetingId, Authentication authentication) throws Exception {
+    public Subscription postRecord(@PathVariable String meetingId, Authentication authentication) throws Exception {
         Meeting meeting = this.meetingService.getMeetingById(meetingId)
                 .stream().findFirst().orElse(null);
         User user = this.userService.findUserByUsername(authentication.getName());

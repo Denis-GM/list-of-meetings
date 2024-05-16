@@ -44,10 +44,12 @@
 
         <div class="subscriptions">
             <div th:each="subscription : ${userSubscriptions}">
-                <div class="rec">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${subscription.meeting.name}">
-                    <h3 th:text="${subscription.meeting.name}">Название мероприятия</h3>
-                </div>
+                <a th:href="@{/meetings/__${subscription.meeting.id}__}">
+                    <div class="rec">
+                        <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${subscription.meeting.name}">
+                        <h3 th:text="${subscription.meeting.name}">Название мероприятия</h3>
+                    </div>
+                </a>
             </div>
             <!--<div class="rec">
                 <img src="../fonts/play.jpeg" alt="Мероприятие 1">
@@ -70,11 +72,13 @@
 
         <div class="my-events">
             <div th:each="meeting : ${userMeetings}">
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
-                    <h3 th:text="${meeting.name}">Название мероприятия</h3>
-                    <p th:text="'Записались: ' + ${meeting.recordedUsers}">Количество записавшихся</p>
-                </div>
+                <a th:href="@{/meetings/__${meeting.id}__}">
+                    <div class="event">
+                        <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
+                        <h3 th:text="${meeting.name}">Название мероприятия</h3>
+                        <p th:text="'Записались: ' + ${meeting.totalNumberSeats}">Количество записавшихся</p>
+                    </div>
+                </a>
             </div>
             <!--<div class="event">
                 <img src="../fonts/play.jpeg" alt="Мероприятие 4">

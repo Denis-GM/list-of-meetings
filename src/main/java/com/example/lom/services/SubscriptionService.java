@@ -28,8 +28,8 @@ public class SubscriptionService {
             this.subscriptionRepository.save(subscription);
             meeting.setAvailableSeats(meeting.getAvailableSeats() - 1);
         }
-        else
-            throw new Exception("Подпись уже существует");
+//        else
+//            throw new Exception("Подпись уже существует");
         return subscription;
     }
 

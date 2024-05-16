@@ -16,8 +16,8 @@ public class Meeting {
     private String description;
     private Date date;
     private String place;
-    private int totalNumberSeats = 10;
-    private int availableSeats = 10;
+    private int totalNumberSeats;
+    private int availableSeats;
 
     @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name="organizer")
@@ -29,19 +29,19 @@ public class Meeting {
     private Set<Subscription> subscriptions;
 
 //    private int tags = 0;
-//    private  int recordedUsers = 0;
 
     public Meeting() {
 
     }
 
-    public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User organizer) {
+    public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User creator) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.place = place;
         this.totalNumberSeats = totalNumberSeats;
-        this.organizer = organizer;
+        this.availableSeats = totalNumberSeats;
+        this.creator = creator;
     }
 
     public String getId() {

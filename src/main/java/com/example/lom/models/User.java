@@ -29,7 +29,7 @@ public class User {
     private Set<Subscription> subscriptions;
 
     // Организованные (созданные) пользователем мероприятия
-    @OneToMany(mappedBy = "organizer", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Meeting> createdMeetings;
 
@@ -107,11 +107,11 @@ public class User {
         this.email = email;
     }
 
-    public Set<Subscription> getRecords() {
+    public Set<Subscription> getSubscriptions() {
         return subscriptions;
     }
 
-    public void setRecords(Set<Subscription> subscriptions) {
+    public void setSubscriptions(Set<Subscription> subscriptions) {
         this.subscriptions.addAll(subscriptions);
     }
 

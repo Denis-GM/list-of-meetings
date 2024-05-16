@@ -18,9 +18,9 @@
                 <li th:text="${meeting.place}"></li>
                 <li>Количество мест: <span th:text="${meeting.totalNumberSeats}"></span></li>
                 <li>Организатор:
-                    <span th:text="${meeting.organizer.lastName}"></span>
-                    <span th:text="${meeting.organizer.firstName}"></span>
-                    (<span th:text="${meeting.organizer.username}"></span>)
+                    <span th:text="${meeting.creator.lastName}"></span>
+                    <span th:text="${meeting.creator.firstName}"></span>
+                    (<span th:text="${meeting.creator.username}"></span>)
                 </li>
                 <li><a th:href="@{/api/subscriptions/__${meeting.id}__}">Записаться</a></li>
             </ul>
