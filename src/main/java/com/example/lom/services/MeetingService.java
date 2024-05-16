@@ -1,6 +1,7 @@
 package com.example.lom.services;
 
 import com.example.lom.models.Meeting;
+import com.example.lom.models.User;
 import com.example.lom.repositories.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,9 @@ public class MeetingService {
 
     public void deleteMeeting(String id) {
         this.meetingRepository.deleteById(UUID.fromString(id));
+    }
+
+    public List<Meeting> getMeetingsByCreator(User creator) {
+        return meetingRepository.findByCreator(creator);
     }
 }

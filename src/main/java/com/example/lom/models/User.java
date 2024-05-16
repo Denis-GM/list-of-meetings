@@ -111,9 +111,4 @@ public class User {
         this.email = email;
     }
 
-//    public Meeting[] getMeetingsRecords() { return meetingsRecords; }
-
-//    public void setMeetingsRecords(Meeting[] meetingsRecords) {
-//        this.meetingsRecords = meetingsRecords;
-//    }
 }

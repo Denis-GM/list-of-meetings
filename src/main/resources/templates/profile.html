@@ -31,7 +31,7 @@
             <button id="save-button" style="display: none;">Сохранить</button>
         </div>
 
-        <form id="edit-form" action="/profile/edit" method="post" style="display: none;">
+        <form id="edit-form" th:action="@{/edit}" method="post" style="display: none;">
             <input type="text" id="last-name-form" name="lastName">
             <input type="text" id="first-name-form" name="firstName">
             <input type="text" id="phone-form" name="phone">
@@ -43,7 +43,13 @@
         </div>
 
         <div class="records">
-            <div class="rec">
+            <div th:each="record : ${userRecords}">
+                <div class="rec">
+                    <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${record.meeting.name}">
+                    <h3 th:text="${record.meeting.name}">Название мероприятия</h3>
+                </div>
+            </div>
+            <!--<div class="rec">
                 <img src="../fonts/play.jpeg" alt="Мероприятие 1">
                 <h3>Сеанс настольных игр</h3>
             </div>
@@ -54,15 +60,23 @@
             <div class="rec">
                 <img src="../fonts/play.jpeg" alt="Мероприятие 3">
                 <h3>Сеанс настольных игр</h3>
-            </div>
+            </div> -->
         </div>
+
 
         <div class="rectangle">
             <h2>Мои мероприятия</h2>
         </div>
 
         <div class="my-events">
-            <div class="event">
+            <div th:each="meeting : ${userMeetings}">
+                <div class="event">
+                    <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
+                    <h3 th:text="${meeting.name}">Название мероприятия</h3>
+                    <p th:text="'Записались: ' + ${meeting.recordedUsers}">Количество записавшихся</p>
+                </div>
+            </div>
+            <!--<div class="event">
                 <img src="../fonts/play.jpeg" alt="Мероприятие 4">
                 <h3>Сеанс настольных игр</h3>
                 <p>Записались: 20</p>
@@ -81,7 +95,7 @@
                 <img src="../fonts/play.jpeg" alt="Мероприятие 7">
                 <h3>Сеанс настольных игр</h3>
                 <p>Записались: 30</p>
-            </div>
+            </div>-->
         </div>
     </div>
 </body>

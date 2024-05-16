@@ -1,9 +1,6 @@
 package com.example.lom.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -20,6 +17,9 @@ public class Meeting {
     private String place;
     private int totalNumberSeats = 0;
     private int availableSeats = 0;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "creator_id")
+    private User creator;
 
     private int tags = 0;
     private  int recordedUsers = 0;
@@ -91,4 +91,9 @@ public class Meeting {
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
     }
+
+    public User getCreator() { return creator; }
+
+    public void setCreator(User creator) { this.creator = creator; }
+
 }

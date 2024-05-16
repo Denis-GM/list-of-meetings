@@ -3,6 +3,7 @@ package com.example.lom.controllers;
 import com.example.lom.models.Meeting;
 import com.example.lom.models.Record;
 import com.example.lom.models.User;
+import com.example.lom.repositories.UserRepository;
 import com.example.lom.services.MeetingService;
 import com.example.lom.services.RecordService;
 import com.example.lom.services.UserService;
@@ -20,13 +21,15 @@ public class RecordApiController {
     private final RecordService recordService;
     private final MeetingService meetingService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Autowired
     public RecordApiController(RecordService recordService, MeetingService meetingService,
-                               UserService userService) {
+                               UserService userService, UserRepository userRepository) {
         this.recordService = recordService;
         this.meetingService = meetingService;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
 
@@ -37,7 +40,7 @@ public class RecordApiController {
         var meeting = this.meetingService.getMeetingById(meetingId);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        var user = this.userService.loadUserByUsername(authentication.getName());
+        User user = this.userRepository.findByUsername(authentication.getName());
 //        user.setRecord(record);
         return this.recordService.postRecord(record);
     }
