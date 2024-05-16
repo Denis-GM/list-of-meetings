@@ -76,7 +76,8 @@
                     <div class="event">
                         <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
                         <h3 th:text="${meeting.name}">Название мероприятия</h3>
-                        <p th:text="'Записались: ' + ${meeting.totalNumberSeats}">Количество записавшихся</p>
+<!--                    <-- availableSeats исправить -->
+                        <p th:text="'Записались: ' + ${meeting.availableSeats}">Количество записавшихся</p>
                     </div>
                 </a>
             </div>

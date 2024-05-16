@@ -28,8 +28,8 @@ public class Meeting {
     @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Subscription> subscriptions;
 
-//    private int tags = 0;
-
+//    private int tags;
+//    private int numberOccupiedPlaces;
     public Meeting() {
 
     }

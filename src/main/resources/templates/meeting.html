@@ -22,7 +22,8 @@
                     <span th:text="${meeting.creator.firstName}"></span>
                     (<span th:text="${meeting.creator.username}"></span>)
                 </li>
-                <li><a th:href="@{/api/subscriptions/__${meeting.id}__}">Записаться</a></li>
+                <li><a th:href="@{/api/subscriptions/subscribe/__${meeting.id}__}" type="button" >Записаться</a></li>
+                <li><a th:href="@{/api/subscriptions/unsubscribe/__${meeting.id}__}">Отменить запись</a></li>
             </ul>
         </div>
     </div>
