@@ -20,18 +20,17 @@ public class MeetingService {
         this.meetingRepository = meetingRepository;
         this.userService = userService;
 
-        User user = this.userService.findUserById("c6428aa4-4c16-4b7a-8cbe-a250e95227e0");
+/*        User user = this.userService.findUserById("c6428aa4-4c16-4b7a-8cbe-a250e95227e0");
         var userByUsername = this.userService.loadUserByUsername("denis");
-//        this.meetingRepository.saveAll(List.of(
-//                new Meeting("Настольная игра 1", "Описание 1", new Date(),
-//                        "Екатеринбург", 6, user),
-//                new Meeting("Настольная игра 2", "Описание 2", new Date(),
-//                        "Екатеринбург", 4, user),
-//                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",
-//                        12, user)
-//        ));
+       this.meetingRepository.saveAll(List.of(
+               new Meeting("Настольная игра 1", "Описание 1", new Date(),
+                      "Екатеринбург", 6, user),
+              new Meeting("Настольная игра 2", "Описание 2", new Date(),
+                       "Екатеринбург", 4, user),
+              new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",
+                     12, user)
+      ));*/
     }
-
 
     public List<Meeting> getMeetings() {
         List<Meeting> meetings = new ArrayList<>();

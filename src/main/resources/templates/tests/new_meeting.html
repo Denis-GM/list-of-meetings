@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый митинг&ndash; пуксреньк</title>
+</head>
+<body>
+<a data-th-href="@{/tests/list}">&larr; К списку митингов</a>
+<h1>Новый митинг</h1>
+<div data-th-if="${errors}">
+    <h2>Допущены ошибки</h2>
+    <ul>
+        <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+    </ul>
+</div>
+<form method="post" data-th-action="@{/tests/create}">
+    <label>
+        Название:<br>
+        <input type="text" name="title" data-th-value="${payload?.title}">
+    </label><br>
+    <label>
+        Описание:<br>
+        <textarea name="details" data-th-text="${payload?.details}"></textarea>
+    </label><br>
+    <label>
+        Во скока?:<br>
+        <textarea name="date" data-th-text="${payload?.date}"></textarea>
+    </label><br>
+
+    <button type="submit">Создать</button>
+</form>
+</body>
+</html>

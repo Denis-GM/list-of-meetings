@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${meeting.title}]] &ndash; пуксреньк</title>
+</head>
+<body>
+<a data-th-href="@{/tests/list}">&larr; К списку митингов</a>
+<h1 data-th-text="${meeting.title}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span data-th-text="${meeting.id}"></span></li>
+    <li><strong>Название</strong>: <span data-th-text="${meeting.title}"></span></li>
+    <li><strong>Описание</strong>: <span data-th-text="${meeting.details}"></span></li>
+    <li><strong>Нахождение на оси времени</strong>: <span data-th-text="${meeting.date}"></span></li>
+
+</ul>
+<a data-th-href="@{/tests/{meetingId}/edit(meetingId=${meeting.id})}">Изменить</a>
+<form method="post" data-th-action="@{/tests/{meetingId}/delete(meetingId=${meeting.id})}">
+    <button type="submit">Удалить</button>
+</form>
+
+</body>
+</html>

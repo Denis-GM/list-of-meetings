@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать &laquo; [[${meeting.title}]]&raquo; &ndash; пуксреньк</title>
+</head>
+<body>
+<a data-th-href="@{/tests/{meetingId}(meetingId=${meeting.id})}">&larr; К митингу</a>
+<h1>Редактировать &laquo; [[${meeting.title}]]</h1>
+<div data-th-if="${errors}">
+    <h2>Допущены ошибки</h2>
+    <ul>
+        <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+    </ul>
+</div>
+<form method="post" data-th-action="@{/tests/{meetingId}/edit(meetingId=${meeting.id})}">
+    <label>
+        Название:<br>
+        <input type="text" name="title" data-th-value="${payload != null ? payload.title : meeting.title}">
+    </label><br>
+    <label>
+        Описание:<br>
+        <textarea name="details" data-th-text="${payload != null ? payload.details : meeting.details}"></textarea>
+    </label><br>
+    <label>
+        Нахождение на оси времени:<br>
+        <textarea name="date" data-th-text="${payload != null ? payload.date : meeting.date}"></textarea>
+    </label><br>
+
+    <button type="submit">Изменить</button>
+</form>
+</body>
+</html>
