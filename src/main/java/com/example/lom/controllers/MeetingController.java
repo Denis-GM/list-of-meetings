@@ -4,9 +4,11 @@ import com.example.lom.models.metingPayload.MetingPayload;
 import com.example.lom.models.Meeting;
 import com.example.lom.models.Subscription;
 import com.example.lom.models.User;
+import com.example.lom.models.metingPayload.UpdateMetingPayload;
 import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
 import com.example.lom.services.UserService;
+import jakarta.validation.Payload;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -77,24 +79,25 @@ public class MeetingController {
     public String createMeeting(@Valid MetingPayload payload, BindingResult bindingResult,
                                     Authentication authentication, Model model) {
         User currentUser  = userService.getUserByUsername(authentication.getName());
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("payload", payload);
-//            model.addAttribute("errors", bindingResult.getAllErrors().stream()
-//                    .map(ObjectError::getDefaultMessage)
-//                    .toList());
-//            return "createMeeting";
-//        }
-//        else {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("payload", payload);
+            model.addAttribute("errors", bindingResult.getAllErrors().stream()
+                    .map(ObjectError::getDefaultMessage)
+                    .toList());
+            return "createMeeting";
+        }
+        else {
             Meeting meeting = new Meeting(
                     payload.title(),
                     payload.details(),
-                    new Date(),
+                    payload.date(),
                     payload.place(),
                     payload.totalNumberSeats(),
+                    payload.availableSeats(),
                     currentUser);
             this.meetingService.addMeeting(meeting);
             return "redirect:/";
-//        }
+        }
     }
 
     @RequestMapping(value = "/delete/{id}", method={RequestMethod.DELETE, RequestMethod.POST})
@@ -114,6 +117,24 @@ public class MeetingController {
     public String meetingEditPage(Model model, @PathVariable String id) {
         Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);;
         model.addAttribute("meeting", meeting);
-        return "createMeeting";
+        return "edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateMeeting(@ModelAttribute(value = "meeting", binding = false) Meeting meting, @PathVariable String id,Authentication authentication,@Valid UpdateMetingPayload payload,
+                                BindingResult bindingResult, Model model) {
+        User currentUser  = userService.getUserByUsername(authentication.getName());
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("payload", payload);
+            model.addAttribute("errors", bindingResult.getAllErrors().stream()
+                    .map(ObjectError::getDefaultMessage)
+                    .toList());
+            return "meetings/edit/{id}";
+        }
+        else {
+                this.meetingService.updateMeeting(meting);
+                return "redirect:/meetings/{id}".formatted(meting.getId());
+
+        }
     }
 }

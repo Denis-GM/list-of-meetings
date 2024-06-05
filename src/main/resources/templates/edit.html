@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <link th:href="@{/css/createMeeting.css}" rel="stylesheet" />
+    <title>Создание мероприятия</title>
+</head>
+<body>
+<div th:include="layout :: copy"></div>
+<form class="content" method="post" data-th-action="@{/meetings/edit/__${meeting.id}__}">
+    <a href="/" class="btn btn-primary mb-3">Назад</a>
+
+    <!-- Блок для загрузки изображения -->
+    <div class="box image-container">
+        <img class="image" src="../img/camera.png" alt="Фотоаппарат">
+        <input type="file" class="form-control-file file-input">
+    </div>
+
+    <!-- Блок для ввода названия и описания -->
+    <div class="box">
+        <h5>Введите название</h5>
+        <input type="text" name="title" data-th-value="${payload != null ? payload.title : meeting.title}" class="form-control" placeholder="Название мероприятия">
+        <h5 class="mt-3">Введите описание</h5>
+        <textarea name="details" data-th-text="${payload != null ? payload.details : meeting.details}" class="form-control" rows="3" placeholder="Введите описание"></textarea>
+    </div>
+
+    <!-- Блоки для количества мест -->
+    <div class="row">
+        <div class="col-sm-4 box">
+            <h5>Место</h5>
+            <input type="text" name="place" data-th-text="${payload != null ? payload.place : meeting.place}" class="form-control" placeholder="Место">
+        </div>
+        <div>
+            <h5>Во скока?:</h5>
+            <input name="date" data-th-text="${payload != null ? payload.date : meeting.date}" class="form-control" placeholder="Дата"></input>
+        </div>
+        <div class="col-sm-4 box">
+            <h5>Всего мест</h5>
+            <input type="number" name="totalNumberSeats" data-th-text="${payload != null ? payload.totalNumberSeats : meeting.totalNumberSeats}" class="form-control" placeholder="Количество мест">
+        </div>
+        <div class="col-sm-4 d-flex align-items-center">
+            <button class="btn btn-success btn-block">Создать</button>
+        </div>
+    </div>
+<!--пуксреньк-->
+    <!-- Блок для тегов -->
+    <div class="box">
+        <h5>Теги</h5>
+        <button class="tag-button">Игры</button>
+        <button class="tag-button">Спорт</button>
+        <button class="tag-button">Большая компания</button>
+    </div>
+</form>
+<script>
+    <!--        document.getElementById('date-input').valueAsDate = new Date();-->
+</script>
+</body>
+<script type="text/javascript" th:src="@{/js/createMeeteng.js}"></script>
+</html>

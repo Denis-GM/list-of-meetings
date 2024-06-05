@@ -1,11 +1,242 @@
-.image-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.image {
+html,
+body {
+    font-family: "Jura", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    max-width: 185px;
+    height: 50px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 20px;
+
+    font-family: "Jura", sans-serif;
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    color: #444444;
+
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.back-button:hover {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.pic-select {
+    max-width: 800px;
+    height: 370px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2)
+}
+
+.camera-image {
+    width: 240px
+}
+
+.open-file {
+    margin-top: 0px;
+    padding: 10px;
+    width: 240px;
+    height: 50px;
+    background-color: #C5C3C3;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.open-file:hover {
+    background-color: #848181;
+}
+
+.box {
+    max-width: 800px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.box-header {
+    height: 70px;
+    background-color: #24315E;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-header input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
     width: 100%;
-    /* height: 200px; */
+    outline: none;
+    text-align: center;
+    font-family: "Jura", sans-serif;
+}
+
+.box textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.box-other {
+    max-width: 800px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.meeting-details {
+    background: none;
+    border: none;
+    font-size: 25px;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    font-family: "Jura", sans-serif;
+}
+
+.custom-row {
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 20px;
+}
+
+.custom-box {
+    width: 250px;
+    max-width: 250px;
+    height: 115px;
+    border-radius: 20px;
+    background-color: #A8D1E7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2)
+    margin-bottom: 20px;
+}
+
+.custom-box h5 {
+    font-size: 25px;
+    color: #444444;
+    margin-bottom: 10px;
+}
+
+.custom-box input {
+    width: 100%;
+    font-size: 40px;
+    color: #444444;
+    text-align: center;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: "Jura", sans-serif;
+}
+
+.create-button {
+    width: 100%;
+    height: 100%;
+    background-color: #F76D6D;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-family: "Jura", sans-serif;
+}
+
+.create-button:hover {
+    background-color: #FD6666;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.2)
+}
+
+.create-button:focus {
+    outline: none;
+}
+
+h5 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.tags {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.tag-button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #C5C3C3;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tag-button.selected {
+    background-color: #F76D6D;
 }

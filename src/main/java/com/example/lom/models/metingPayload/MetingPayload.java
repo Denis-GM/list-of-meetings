@@ -22,5 +22,6 @@ public record MetingPayload(
         @NotNull(message = "Людей-то скока А-Л-О???")
         int totalNumberSeats,
 
-        Integer availableSeats
+        @NotNull(message = "Укажите оставшееся кол-во мест")
+        int availableSeats
 ) { }
