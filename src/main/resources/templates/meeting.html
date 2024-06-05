@@ -9,23 +9,63 @@
 </head>
 <body>
     <div th:include="layout :: copy"></div>
-    <div class="content">
-        <div>
-            <h2>Мероприятие</h2>
-            <ul class="list-reset">
-                <li th:text="${meeting.name}"></li>
-                <li th:text="${meeting.date}"></li>
-                <li th:text="${meeting.place}"></li>
-                <li>Количество мест: <span th:text="${meeting.totalNumberSeats}"></span></li>
-                <li>Организатор:
-                    <span th:text="${meeting.creator.lastName}"></span>
-                    <span th:text="${meeting.creator.firstName}"></span>
-                    (<span th:text="${meeting.creator.username}"></span>)
+    <main class="content">
+        <div class="container">
+            <input 
+                class="back-button"
+                action="action"
+                onclick="window.history.go(-1); return false;"
+                type="submit"
+                value="Назад"
+            />
+            <ul class="meeting list-reset">
+                <li class="meeting-image-container">
+                    <img src="../fonts/play.jpeg" class="meeting-image" alt="Мероприятие">
                 </li>
-                <li><a th:href="@{/api/subscriptions/subscribe/__${meeting.id}__}" type="button" >Записаться</a></li>
-                <li><a th:href="@{/api/subscriptions/unsubscribe/__${meeting.id}__}">Отменить запись</a></li>
+                <li class="meeting-info">
+                    <div class="meeting-info__name" th:text="${meeting.name}"></div>
+                    <div class="meeting-info__main">
+                        <div>
+                            Дата проведения:
+                            <span th:text="${#dates.format(meeting.date, 'dd.MM.yyyy HH:mm')}"></span>
+                        </div>
+                        <div>
+                            Место проведения:
+                            <span th:text="${meeting.place}"></span>
+                        </div>
+                        <div>Организатор:
+                            <span th:text="${meeting.creator.lastName}"></span>
+                            <span th:text="${meeting.creator.firstName}"></span>
+                            , <span th:text="${meeting.creator.phone}"></span>
+                        </div>
+                        <div th:text="${meeting.description}"></div>
+                    </div>
+                </li>
+                <li class="meeting-info-seats">
+                    <div class="meeting-info-seats__el meeting-info-seats__total">
+                        <span>Всего мест</span>
+                        <span class="count-seats" th:text="${meeting.totalNumberSeats}"></span>
+                    </div>
+                    <div class="meeting-info-seats__el meeting-info-seats__available">
+                        <span>Осталось мест</span>
+                        <span class="count-seats" th:text="${meeting.availableSeats}"></span>
+                    </div>
+                    <a th:if="${!isCreator && subscription == null}" class="meeting-info-seats__el meeting-info-seats__subscribe" 
+                        th:href="@{/subscriptions/subscribe/__${meeting.id}__}">
+                        Подать заявку
+                    </a>
+                    <a th:if="${!isCreator && subscription != null}" class="meeting-info-seats__el meeting-info-seats__subscribe" 
+                        th:href="@{/subscriptions/unsubscribe/__${meeting.id}__/__${subscription.id}__}">
+                        Отменить запись
+                    </a>
+                    <form th:if="${isCreator}"  
+                        action="#" th:action="@{/meetings/delete/__${meeting.id}__}" 
+                        th:method="delete" class="meeting-info-seats__el meeting-info-seats__subscribe" >
+                        <button type="submit" class="btn-delete-meeting" id="submitButton">Удалить мероприятие</button>
+                    </form>
+                </li>
             </ul>
         </div>
-    </div>
+    </main>
 </body>
 </html>

@@ -10,13 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
+
     private final UserRepository userRepository;
 
     @Autowired
@@ -38,12 +38,12 @@ public class UserService implements UserDetailsService {
         );
     }
 
-    public User findUserByUsername(String username) throws UsernameNotFoundException
+    public User getUserByUsername(String username)
     {
         return userRepository.findByUsername(username);
     }
 
-    public User findUserById(String userId) {
+    public User getUserById(String userId) {
         Optional<User> userFromDb = userRepository.findById(UUID.fromString(userId));
         return userFromDb.orElse(new User());
     }

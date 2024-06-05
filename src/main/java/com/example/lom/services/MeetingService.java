@@ -12,7 +12,9 @@ import java.util.*;
 
 @Service
 public class MeetingService {
+
     private final MeetingRepository meetingRepository;
+
     private final UserService userService;
 
     @Autowired
@@ -20,18 +22,17 @@ public class MeetingService {
         this.meetingRepository = meetingRepository;
         this.userService = userService;
 
-        User user = this.userService.findUserById("c6428aa4-4c16-4b7a-8cbe-a250e95227e0");
-        var userByUsername = this.userService.loadUserByUsername("denis");
+//        User user = this.userService.getUserByUsername("den");
 //        this.meetingRepository.saveAll(List.of(
-//                new Meeting("Настольная игра 1", "Описание 1", new Date(),
-//                        "Екатеринбург", 6, user),
-//                new Meeting("Настольная игра 2", "Описание 2", new Date(),
-//                        "Екатеринбург", 4, user),
-//                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",
-//                        12, user)
+//                new Meeting("Настольная игра 1", "Описание 1", new Date(), "Екатеринбург", 6, user),
+//                new Meeting("Настольная игра 2", "Описание 2", new Date(), "Екатеринбург", 4, user),
+//                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург", 12, user)
 //        ));
     }
 
+    public Optional<Meeting> getMeetingById(String id) {
+        return this.meetingRepository.findById(UUID.fromString(id));
+    }
 
     public List<Meeting> getMeetings() {
         List<Meeting> meetings = new ArrayList<>();
@@ -39,16 +40,21 @@ public class MeetingService {
         return meetings;
     }
 
-    public Optional<Meeting> getMeetingById(String id) {
-        return this.meetingRepository.findById(UUID.fromString(id));
+    public List<Meeting> getMeetingsByCreator(User creator) {
+        return meetingRepository.findByCreator(creator);
     }
 
-    public Meeting postMeeting(Meeting meeting) {
+    public Meeting addMeeting(Meeting meeting) {
         this.meetingRepository.save(meeting);
         return meeting;
     }
 
-    public ResponseEntity<Meeting> putMeeting(String id, Meeting meeting) {
+    public Meeting updateMeeting(Meeting meeting) {
+        this.meetingRepository.save(meeting);
+        return meeting;
+    }
+
+    public ResponseEntity<Meeting> editMeeting(String id, Meeting meeting) {
         return (!this.meetingRepository.existsById(UUID.fromString(id)))
                 ? new ResponseEntity<>(this.meetingRepository.save(meeting),
                 HttpStatus.CREATED)
@@ -58,9 +64,5 @@ public class MeetingService {
 
     public void deleteMeeting(String id) {
         this.meetingRepository.deleteById(UUID.fromString(id));
-    }
-
-    public List<Meeting> getMeetingsByCreator(User creator) {
-        return meetingRepository.findByCreator(creator);
     }
 }

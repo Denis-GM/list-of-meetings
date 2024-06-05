@@ -20,8 +20,6 @@ public class Meeting {
     private int availableSeats;
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="organizer")
-//    private User organizer;
     @JoinColumn(name = "creator_id")
     private User creator;
 
@@ -29,10 +27,7 @@ public class Meeting {
     private Set<Subscription> subscriptions;
 
 //    private int tags;
-//    private int numberOccupiedPlaces;
-    public Meeting() {
-
-    }
+    public Meeting() { }
 
     public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User creator) {
         this.name = name;
@@ -96,6 +91,14 @@ public class Meeting {
         return availableSeats;
     }
 
+    public void incrementAvailableSeat() {
+        this.availableSeats += 1;
+    }
+
+    public void decrementAvailableSeat() {
+        this.availableSeats -= 1;
+    }
+
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
     }
@@ -104,4 +107,11 @@ public class Meeting {
 
     public void setCreator(User creator) { this.creator = creator; }
 
+    public Set<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(Set<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
+    }
 }

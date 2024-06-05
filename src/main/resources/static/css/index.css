@@ -86,12 +86,17 @@ body {
 }
 
 .event {
-    width: 340px;
+    width: 30%;
     height: 250px;
     background-color: lightblue;
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
+}
+
+.event a {
+    text-decoration: none;
+    color: var(--main-gray);
 }
 
 .event img {
@@ -114,12 +119,4 @@ body {
 .event p {
     font-size: 20px;
     margin: 10px auto auto;
-}
-
-
-@font-face {
-  font-family: "Jura";
-  src: url("../fonts/Jura-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
 }

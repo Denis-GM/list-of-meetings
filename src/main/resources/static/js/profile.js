@@ -1,4 +1,10 @@
+var userInfo = document.getElementById("user-info");
+var editForm = document.getElementById("edit-form");
+
 function editProfile() {
+    userInfo.style.visibility = "hidden";
+    editForm.style.visibility = "visible";
+
     document.getElementById('user-last-name').style.display = 'none';
     document.getElementById('last-name-input').style.display = 'inline';
     document.getElementById('user-first-name').style.display = 'none';

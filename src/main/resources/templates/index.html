@@ -48,7 +48,7 @@
 <div class="content">
     <header>
         <select id="filter-select">
-            <option value="all">Все мероприятия</option>
+            <option value="all" selected>Все мероприятия</option>
             <option value="games">Игры</option>
             <option value="sports">Спорт</option>
             <option value="sports">Большая компания</option>
@@ -62,42 +62,15 @@
     </div>
 
     <main>
-        <div class="events-grid">
-<!--            <ul>-->
-<!--                <th:block th:each="meeting : ${meetings}">-->
-<!--                <li class="event"></li>-->
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-            </a>
-        </div>
+        <ul class="events-grid">
+            <li class="event" th:each="meeting : ${meetings}">
+                <a th:href="@{/meetings/__${meeting.id}__}">
+                    <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
+                    <h3 th:text="${meeting.name}"></h3>
+                    <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
+                </a>
+            </li>
+        </ul>
     </main>
 </div>
 </body>
