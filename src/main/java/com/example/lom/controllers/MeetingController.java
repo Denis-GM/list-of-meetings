@@ -8,6 +8,7 @@ import com.example.lom.models.metingPayload.UpdateMetingPayload;
 import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
 import com.example.lom.services.UserService;
+import jakarta.validation.Payload;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -77,6 +78,7 @@ public class MeetingController {
                     payload.date(),
                     payload.place(),
                     payload.totalNumberSeats(),
+                    payload.availableSeats(),
                     currentUser);
             this.meetingService.addMeeting(meeting);
             return "redirect:/";

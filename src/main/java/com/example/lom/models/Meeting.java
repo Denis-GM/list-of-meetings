@@ -36,13 +36,13 @@ public class Meeting {
 //    private int tags;
     public Meeting() { }
 
-    public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User creator) {
+    public Meeting(String name, String description, Date date, String place, int totalNumberSeats, int availableSeats, User creator) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.place = place;
         this.totalNumberSeats = totalNumberSeats;
-        this.availableSeats = totalNumberSeats;
+        this.availableSeats = availableSeats;
         this.creator = creator;
     }
 
