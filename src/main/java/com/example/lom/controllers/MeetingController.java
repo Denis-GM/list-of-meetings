@@ -1,5 +1,6 @@
 package com.example.lom.controllers;
 
+import com.example.lom.models.metingPayload.MetingPayload;
 import com.example.lom.models.Meeting;
 import com.example.lom.models.Subscription;
 import com.example.lom.models.User;
@@ -7,11 +8,13 @@ import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
 import com.example.lom.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+//import jakarta.validation.Valid;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
@@ -49,11 +52,27 @@ public class MeetingController {
         return "meeting";
     }
 
-    @GetMapping("/create")
-    public String meetingCreatePage(Model model) {
-        model.addAttribute("meeting", new Meeting());
-        return "createMeeting";
-    }
+//    @GetMapping("/create")
+//    public String meetingCreatePage(Model model) {
+//        model.addAttribute("meeting", new Meeting());
+//        return "createMeeting";
+//    }
+
+//    @PostMapping("/create")
+//    public String meetingCreatePage(@Valid MetingPayload payload, BindingResult bindingResult, Model model) {
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("payload", payload);
+//            model.addAttribute("errors", bindingResult.getAllErrors().stream()
+//                    .map(ObjectError::getDefaultMessage)
+//                    .toList());
+//            return "tests/new_meeting";
+//        }
+//        else {
+//            Meting meting = this.meetingService.createMeting(payload.title(), payload.details(),
+//                    payload.date(),payload.place(),payload.totalNumberSeats(),payload.totalNumberSeats());
+//            return "redirect:/tests/list";
+//        }
+//    }
 
     @RequestMapping(value = "/delete/{id}", method={RequestMethod.DELETE, RequestMethod.POST})
     public String deleteMeeting(@PathVariable String id, Authentication authentication) {

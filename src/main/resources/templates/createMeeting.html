@@ -10,8 +10,38 @@
 <body>
 <div th:include="layout :: copy"></div>
 <div class="content">
+    <a data-th-href="@{/}">&larr; К списку митингов</a>
+    <h1>Новый митинг</h1>
+    <div data-th-if="${errors}">
+        <h2>Допущены ошибки</h2>
+        <ul>
+            <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+        </ul>
+    </div>
+    <form method="post" data-th-action="@{/tests/create}">
+        <label>
+            Название:<br>
+            <input type="text" name="title" data-th-value="${payload?.title}">
+        </label><br>
+        <label>
+            Описание:<br>
+            <textarea name="details" data-th-text="${payload?.details}"></textarea>
+        </label><br>
+        <label>
+            Во скока?:<br>
+            <textarea name="date" data-th-text="${payload?.date}"></textarea>
+        </label><br>
+        <label>
+            Где?:<br>
+            <textarea name="place" data-th-text="${payload?.place}"></textarea>
+        </label><br>
+        <label>
+            Сколько?:<br>
+            <textarea name="totalNumberSeats" data-th-text="${payload?.totalNumberSeats}"></textarea>
+        </label><br>
 
+        <button type="submit">Создать</button>
+    </form>
 </div>
 </body>
-<script type="text/javascript" th:src="@{/js/index.js}"></script>
 </html>
