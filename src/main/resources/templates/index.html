@@ -63,40 +63,15 @@
 
     <main>
         <div class="events-grid">
-<!--            <ul>-->
-<!--                <th:block th:each="meeting : ${meetings}">-->
-<!--                <li class="event"></li>-->
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-                <div class="event">
-                    <img src="../img/play.jpeg" alt="Мероприятие 1">
-                    <h3>Сеанс настольных игр</h3>
-                    <p>Записались: 20</p>
-                </div>
-            </a>
+            <ul class="events-grid">
+                <li class="event" th:each="meeting : ${meetings}">
+                    <a th:href="@{/meetings/__${meeting.id}__}">
+                        <img src="../img/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
+                        <h3 th:text="${meeting.name}"></h3>
+                        <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </main>
 </div>

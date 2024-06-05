@@ -23,23 +23,6 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((authz) -> authz
-//                        .requestMatchers("/registration", "/login", "/logout").permitAll()
-//                        .requestMatchers("/delete/**").hasRole("ADMIN")
-//                        .requestMatchers("/create/**").hasAuthority("CREATOR")
-//                        .anyRequest().authenticated())
-////                        .anyRequest().permitAll())
-//                .formLogin((form) -> form
-//                          .loginPage("/login")
-//                          .loginProcessingUrl("/login")
-//                          .defaultSuccessUrl("/")
-//                          .permitAll())
-//                .logout()
-//                .logoutSuccessUrl("/login.html");
-////                .formLogin(Customizer.withDefaults());
-//
-//        return http.build();
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                         "/registration**",
@@ -47,12 +30,15 @@ public class SpringSecurityConfig {
                         "/css/**",
                         "/img/**").permitAll()
                 .anyRequest().authenticated());
-        http.formLogin(fL -> fL.loginPage("/login").permitAll());
+        http.formLogin(fL ->
+                fL.loginPage("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll());
         http.logout(lOut -> {
             lOut.invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login?logout")
+                    .logoutSuccessUrl("/login")
                     .permitAll();
         });
         http.httpBasic(withDefaults());
