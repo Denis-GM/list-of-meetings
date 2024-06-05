@@ -2,9 +2,11 @@ package com.example.lom.controllers.metingPayload;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+
 
 public record UpdateMetingPayload(
         @NotNull
@@ -16,5 +18,13 @@ public record UpdateMetingPayload(
         String details,
 
         @NotNull(message = "Содержание должно быть от 3 до 10 символов")
-        Date date) {
+        Date date,
+
+        String place
+
+        ,
+        @NotNull(message = "Людей-то скока А-Л-О???")
+        int totalNumberSeats,
+
+        Integer availableSeats) {
 }

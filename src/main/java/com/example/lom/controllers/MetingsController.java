@@ -18,18 +18,18 @@ public class MetingsController {
     private final MetingService meetingService;
 
     @GetMapping("list")
-    public String getProductsList(Model model) {
+    public String getMeetingsList(Model model) {
         model.addAttribute("meetings", this.meetingService.findAllMetings());
         return "tests/list";
     }
 
     @GetMapping("create")
-    public String getNewProductPage() {
+    public String getNewMeetingPage() {
         return "tests/new_meeting";
     }
 
     @PostMapping("create")
-    public String createProduct(@Valid MetingPayload payload, BindingResult bindingResult, Model model) {
+    public String createMeeting(@Valid MetingPayload payload, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()
@@ -38,7 +38,8 @@ public class MetingsController {
             return "tests/new_meeting";
         }
         else {
-            Meting meting = this.meetingService.createMeting(payload.title(), payload.details(), payload.date());
+            Meting meting = this.meetingService.createMeting(payload.title(), payload.details(),
+                    payload.date(),payload.place(),payload.totalNumberSeats(),payload.totalNumberSeats());
             return "redirect:/tests/list";
         }
     }

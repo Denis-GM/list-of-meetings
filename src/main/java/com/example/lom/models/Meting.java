@@ -15,9 +15,8 @@ public class Meting {
     private String title;
     private String details;
     private Date date;
-/*
     private String place;
     private int totalNumberSeats;
-    private int availableSeats;*/
+    private int availableSeats = 0;
 
 }

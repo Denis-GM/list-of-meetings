@@ -15,7 +15,19 @@ public record MetingPayload(
         String details,
 
         @NotNull(message = "Эу, дату постовь")
-        Date date
+        Date date,
+
+        String place,
+
+        @NotNull(message = "Людей-то скока А-Л-О???")
+        int totalNumberSeats,
+
+       Integer availableSeats
+
+
+
+
+
 ) {
 
 }

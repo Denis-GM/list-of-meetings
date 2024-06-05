@@ -26,6 +26,14 @@
         Нахождение на оси времени:<br>
         <textarea name="date" data-th-text="${payload != null ? payload.date : meeting.date}"></textarea>
     </label><br>
+    <label>
+        Место редис-лоцирования:<br>
+        <textarea name="place" data-th-text="${payload != null ? payload.place : meeting.place}"></textarea>
+    </label><br>
+    <label>
+        Сколько каво:<br>
+        <textarea name="totalNumberSeats" data-th-text="${payload != null ? payload.totalNumberSeats : meeting.totalNumberSeats}"></textarea>
+    </label><br>
 
     <button type="submit">Изменить</button>
 </form>

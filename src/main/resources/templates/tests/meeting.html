@@ -12,7 +12,9 @@
     <li><strong>Название</strong>: <span data-th-text="${meeting.title}"></span></li>
     <li><strong>Описание</strong>: <span data-th-text="${meeting.details}"></span></li>
     <li><strong>Нахождение на оси времени</strong>: <span data-th-text="${meeting.date}"></span></li>
-
+    <li><strong>Место редис-лоцирования</strong>: <span data-th-text="${meeting.place}"></span></li>
+    <li><strong>Всего мест</strong>: <span data-th-text="${meeting.totalNumberSeats}"></span></li>
+    <li><strong>СВО бодно мест</strong>: <span data-th-text="${meeting.availableSeats}"></span></li>
 </ul>
 <a data-th-href="@{/tests/{meetingId}/edit(meetingId=${meeting.id})}">Изменить</a>
 <form method="post" data-th-action="@{/tests/{meetingId}/delete(meetingId=${meeting.id})}">

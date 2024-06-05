@@ -26,6 +26,14 @@
         Во скока?:<br>
         <textarea name="date" data-th-text="${payload?.date}"></textarea>
     </label><br>
+    <label>
+        Где?:<br>
+        <textarea name="place" data-th-text="${payload?.place}"></textarea>
+    </label><br>
+    <label>
+        Сколько?:<br>
+        <textarea name="totalNumberSeats" data-th-text="${payload?.totalNumberSeats}"></textarea>
+    </label><br>
 
     <button type="submit">Создать</button>
 </form>

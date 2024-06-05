@@ -23,8 +23,8 @@ public class DefaultMetingService implements MetingService{
 
 
     @Override
-    public Meting createMeting(String title, String details, Date date) {
-        return this.meetingRepository.save(new Meting(null, title, details, date));
+    public Meting createMeting(String title, String details, Date date, String place, int totalNumberSeats, int availableSeats) {
+        return this.meetingRepository.save(new Meting(null, title, details, date  , place,totalNumberSeats, availableSeats));
     }
 
     @Override
@@ -33,12 +33,15 @@ public class DefaultMetingService implements MetingService{
     }
 
     @Override
-    public void updateMeting(Integer id, String title, String details, Date date) {
+    public void updateMeting(Integer id, String title, String details, Date date, String place, int totalNumberSeats, int availableSeats) {
         this.meetingRepository.findById(id)
                 .ifPresentOrElse(meeting -> {
                             meeting.setDetails(details);
                             meeting.setTitle(title);
                             meeting.setDate(date);
+                            meeting.setPlace(place);
+                            meeting.setTotalNumberSeats(totalNumberSeats);
+/*                            meeting.setAvailableSeats(availableSeats);*/
                         },
                         ()->{throw new NoSuchElementException();}
                 );
@@ -51,7 +54,7 @@ public class DefaultMetingService implements MetingService{
     }
 
 /*    @Override
-    public void updateProduct(Integer id, String title, String details) {
+    public void updateMeeting(Integer id, String title, String details) {
         this.meetingRepository.findById(id)
                 .ifPresentOrElse(product -> {
                             product.setDetails(details);
