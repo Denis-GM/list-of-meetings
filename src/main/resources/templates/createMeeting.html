@@ -5,47 +5,53 @@
     <link th:href="@{/css/shared.css}" rel="stylesheet" />
     <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:href="@{/css/layout.css}" rel="stylesheet" />
-    <title>LOM</title>
+    <title>Создание мероприятия</title>
 </head>
 <body>
-<div th:include="layout :: copy"></div>
-<div class="content">
-    <a data-th-href="@{/}">&larr; К списку митингов</a>
-    <h1>Новый митинг</h1>
-    <div data-th-if="${errors}">
-        <h2>Допущены ошибки</h2>
-        <ul>
-            <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
-        </ul>
-    </div>
-    <form method="post" data-th-action="@{/meetings/create}">
-        <label>
-            Название:<br>
-            <input type="text" name="title" data-th-value="${payload?.title}">
-        </label><br>
-        <label>
-            Описание:<br>
-            <textarea name="details" data-th-text="${payload?.details}"></textarea>
-        </label><br>
-        <label>
-            Во скока?:<br>
-            <!-- <input type="date" pattern="yyyy-MM-dd" name="date" data-th-text="${payload?.date}" /> -->
-            <input id="date-input" type="date" name="date" data-th-text="${payload?.date}" />
-        </label><br>
-        <label>
-            Где?:<br>
-            <textarea name="place" data-th-text="${payload?.place}"></textarea>
-        </label><br>
-        <label>
-            Сколько?:<br>
-            <textarea name="totalNumberSeats" data-th-text="${payload?.totalNumberSeats}"></textarea>
-        </label><br>
+    <div th:include="layout :: copy"></div>
+    <div class="content">
+        <a href="/" class="btn btn-primary mb-3">Назад</a>
 
-        <button type="submit">Создать</button>
-    </form>
-</div>
-<script>
-    document.getElementById('date-input').valueAsDate = new Date();
-</script>
+        <!-- Блок для загрузки изображения -->
+        <div class="box">
+            <img src="../img/camera.png" alt="Фотоаппарат" style="width: 100%;">
+            <input type="file" class="form-control-file file-input">
+        </div>
+
+        <!-- Блок для ввода названия и описания -->
+        <div class="box">
+            <h5>Введите название</h5>
+            <input type="text" class="form-control" placeholder="Название мероприятия">
+            <h5 class="mt-3">Введите описание</h5>
+            <textarea class="form-control" rows="3" placeholder="Введите описание"></textarea>
+        </div>
+
+        <!-- Блоки для количества мест -->
+        <div class="row">
+            <div class="col-sm-4 box">
+                <h5>Всего мест</h5>
+                <input type="number" class="form-control" placeholder="Количество мест">
+            </div>
+            <div class="col-sm-4 box">
+                <h5>Осталось мест</h5>
+                <input type="number" class="form-control" placeholder="Осталось мест">
+            </div>
+            <div class="col-sm-4 d-flex align-items-center">
+                <button class="btn btn-success btn-block">Подать заявку</button>
+            </div>
+        </div>
+
+        <!-- Блок для тегов -->
+        <div class="box">
+            <h5>Теги</h5>
+            <button class="tag-button">Игры</button>
+            <button class="tag-button">Спорт</button>
+            <button class="tag-button">Большая компания</button>
+        </div>
+    </div>
+    <script>
+<!--        document.getElementById('date-input').valueAsDate = new Date();-->
+    </script>
 </body>
+<script type="text/javascript" th:src="@{/js/createMeeteng.js}"></script>
 </html>

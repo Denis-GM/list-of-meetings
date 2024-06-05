@@ -47,7 +47,7 @@
             <div class="subscription" th:each="subscription : ${userSubscriptions}">
                 <a th:href="@{/meetings/__${subscription.meeting.id}__}">
                     <div class="rec">
-                        <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${subscription.meeting.name}">
+                        <img src="../img/play.jpeg" alt="Мероприятие" th:alt="${subscription.meeting.name}">
                         <h3 th:text="${subscription.meeting.name}">Название мероприятия</h3>
                     </div>
                 </a>
@@ -63,7 +63,7 @@
             <div class="my-event" th:each="meeting : ${userMeetings}">
                 <a th:href="@{/meetings/__${meeting.id}__}">
                     <div class="event">
-                        <img src="../fonts/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
+                        <img src="../img/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
                         <h3 th:text="${meeting.name}">Название мероприятия</h3>
 <!--                    <-- availableSeats исправить -->
                         <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
