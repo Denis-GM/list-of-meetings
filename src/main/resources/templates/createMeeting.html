@@ -5,16 +5,17 @@
     <link th:href="@{/css/shared.css}" rel="stylesheet" />
     <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <link th:href="@{/css/createMeeting.css}" rel="stylesheet" />
     <title>Создание мероприятия</title>
 </head>
 <body>
     <div th:include="layout :: copy"></div>
-    <form class="content" method="post" data-th-action="@{/tests/create}">
+    <form class="content" method="post" data-th-action="@{/meetings/create}">
         <a href="/" class="btn btn-primary mb-3">Назад</a>
 
         <!-- Блок для загрузки изображения -->
-        <div class="box">
-            <img src="../img/camera.png" alt="Фотоаппарат" style="width: 100%;">
+        <div class="box image-container">
+            <img class="image" src="../img/camera.png" alt="Фотоаппарат">
             <input type="file" class="form-control-file file-input">
         </div>
 

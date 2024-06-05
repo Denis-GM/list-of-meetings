@@ -3,7 +3,6 @@ package com.example.lom.controllers;
 import com.example.lom.models.Meeting;
 import com.example.lom.models.Subscription;
 import com.example.lom.models.User;
-import com.example.lom.repositories.MeetingRepository;
 import com.example.lom.repositories.SubscriptionRepository;
 import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
@@ -42,7 +41,7 @@ public class SubscriptionController {
     }
 
     @RequestMapping(value = "/subscribe/{meetingId}", method={RequestMethod.POST, RequestMethod.GET})
-    public String postSubscription(@PathVariable String meetingId, Authentication authentication) {
+    public String createSubscription(@PathVariable String meetingId, Authentication authentication) {
         User user = this.userService.getUserByUsername(authentication.getName());
         Meeting meeting = this.meetingService.getMeetingById(meetingId).stream().findFirst()
                 .orElse(null);
@@ -74,9 +73,12 @@ public class SubscriptionController {
                 }
             }
             if(isSubscribed) {
-                subscriptionService.deleteSubscription(subscriptionId);
-                meeting.incrementAvailableSeat();
-                meetingService.updateMeeting(meeting);
+//                subscriptionService.deleteSubscription(subscriptionId);
+//                meeting.incrementAvailableSeat();
+//                meetingService.updateMeeting(meeting);
+                Subscription sub = subscriptionService.getSubscriptionById(subscriptionId)
+                        .stream().findFirst().orElse(null);
+                subscriptionService.deleteSubscription(sub, meeting);
             }
         }
         return "redirect:/meetings/{meetingId}";

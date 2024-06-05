@@ -25,13 +25,17 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     // Записи пользователя на мероприятия
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private Set<Subscription> subscriptions;
 
     // Организованные (созданные) пользователем мероприятия
-    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "creator",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private Set<Meeting> createdMeetings;
 
     public User() {

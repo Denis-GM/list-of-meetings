@@ -22,7 +22,7 @@ public class MeetingService {
         this.meetingRepository = meetingRepository;
         this.userService = userService;
 
-//        User user = this.userService.getUserByUsername("den");
+        User user = this.userService.getUserByUsername("denis");
 //        this.meetingRepository.saveAll(List.of(
 //                new Meeting("Настольная игра 1", "Описание 1", new Date(), "Екатеринбург", 6, user),
 //                new Meeting("Настольная игра 2", "Описание 2", new Date(), "Екатеринбург", 4, user),

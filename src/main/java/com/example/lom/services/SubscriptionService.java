@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -20,30 +21,34 @@ public class SubscriptionService {
 
     private final SubscriptionRepository subscriptionRepository;
 
-    private final UserService userService;
-
     @Autowired
-    public SubscriptionService(MeetingRepository meetingRepository, SubscriptionRepository subscriptionRepository, UserService userService) {
+    public SubscriptionService(MeetingRepository meetingRepository, SubscriptionRepository subscriptionRepository) {
         this.meetingRepository = meetingRepository;
         this.subscriptionRepository = subscriptionRepository;
-        this.userService = userService;
     }
 
     public Optional<Subscription> getSubscriptionById(String id) {
-        return this.subscriptionRepository.findById(UUID.fromString(id));
+        return subscriptionRepository.findById(UUID.fromString(id));
     }
 
     public Optional<Subscription> getSubscriptionByUserAndMeeting(User user, Meeting meeting) {
-        return this.subscriptionRepository.findByUserAndMeeting(user, meeting);
+        return subscriptionRepository.findByUserAndMeeting(user, meeting);
     }
 
     public void createSubscription(Subscription subscription, Meeting meeting) {
-        this.subscriptionRepository.save(subscription);
+        subscriptionRepository.save(subscription);
         meeting.decrementAvailableSeat();
         meetingRepository.save(meeting);
     }
 
-    public void deleteSubscription(String id) {
-        this.subscriptionRepository.deleteById(UUID.fromString(id));
+//    public void deleteSubscription(String id) {
+//        var sub = subscriptionRepository.findById(UUID.fromString(id));
+//        subscriptionRepository.deleteById(UUID.fromString(id));
+//    }
+
+    public void deleteSubscription(Subscription subscription, Meeting meeting) {
+        subscriptionRepository.delete(subscription);
+        meeting.incrementAvailableSeat();
+        meetingRepository.save(meeting);
     }
 }

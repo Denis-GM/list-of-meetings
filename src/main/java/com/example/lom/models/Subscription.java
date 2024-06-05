@@ -8,6 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name="Subscription")
 public class Subscription {
+
     @Id
     @GeneratedValue
     private UUID id;
