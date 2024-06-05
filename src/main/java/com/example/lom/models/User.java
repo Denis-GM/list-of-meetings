@@ -2,6 +2,7 @@ package com.example.lom.models;
 
 import jakarta.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -121,5 +122,13 @@ public class User {
 
     public void setCreatedMeetings(Set<Meeting> createdMeetings) {
         this.createdMeetings.addAll(createdMeetings);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+        return Objects.equals(username, user.username);
     }
 }

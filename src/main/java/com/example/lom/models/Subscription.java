@@ -14,7 +14,6 @@ public class Subscription {
 
     private Date dateSubscription = new Date();
 
-    // Пользователь, подписавшийся на мероприятие
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_subscriber_id")
     private User user;
@@ -61,7 +60,7 @@ public class Subscription {
         return meeting;
     }
 
-    public void setMeeting(Meeting meetings) {
-        this.meeting = meetings;
+    public void setMeeting(Meeting meeting) {
+        this.meeting = meeting;
     }
 }

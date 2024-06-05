@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/profile.css}" rel="stylesheet" />
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
     <link th:href="@{/css/layout.css}" rel="stylesheet" />
     <title>Профиль пользователя</title>
 </head>
@@ -10,7 +11,7 @@
     <div th:include="layout :: copy"></div>
     <div class="content">
         <!-- Блок с информацией о пользователе -->
-        <div class="user-info">
+        <div id="user-info" class="user-info">
             <div>
                 <div id="name-info">
                     <span id="user-last-name" th:text="${user.lastName}">Фамилия</span>
@@ -31,11 +32,11 @@
             <button id="save-button" style="display: none;">Сохранить</button>
         </div>
 
-        <form id="edit-form" th:action="@{/edit}" method="post" style="display: none;">
+        <form id="edit-form" class="edit-form" th:action="@{/profile/edit}" method="post">
             <input type="text" id="last-name-form" name="lastName">
             <input type="text" id="first-name-form" name="firstName">
             <input type="text" id="phone-form" name="phone">
-            <input type="submit" value="Сохранить">
+            <button type="submit">Сохранить</button>
         </form>
 
         <div class="rectangle">
@@ -43,7 +44,7 @@
         </div>
 
         <div class="subscriptions">
-            <div th:each="subscription : ${userSubscriptions}">
+            <div class="subscription" th:each="subscription : ${userSubscriptions}">
                 <a th:href="@{/meetings/__${subscription.meeting.id}__}">
                     <div class="rec">
                         <img src="../img/play.jpeg" alt="Мероприятие" th:alt="${subscription.meeting.name}">
@@ -51,18 +52,6 @@
                     </div>
                 </a>
             </div>
-            <!--<div class="rec">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 1">
-                <h3>Сеанс настольных игр</h3>
-            </div>
-            <div class="rec">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 2">
-                <h3>Сеанс настольных игр</h3>
-            </div>
-            <div class="rec">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 3">
-                <h3>Сеанс настольных игр</h3>
-            </div> -->
         </div>
 
 
@@ -71,36 +60,16 @@
         </div>
 
         <div class="my-events">
-            <div th:each="meeting : ${userMeetings}">
+            <div class="my-event" th:each="meeting : ${userMeetings}">
                 <a th:href="@{/meetings/__${meeting.id}__}">
                     <div class="event">
                         <img src="../img/play.jpeg" alt="Мероприятие" th:alt="${meeting.name}">
                         <h3 th:text="${meeting.name}">Название мероприятия</h3>
 <!--                    <-- availableSeats исправить -->
-                        <p th:text="'Записались: ' + ${meeting.availableSeats}">Количество записавшихся</p>
+                        <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
                     </div>
                 </a>
             </div>
-            <!--<div class="event">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 4">
-                <h3>Сеанс настольных игр</h3>
-                <p>Записались: 20</p>
-            </div>
-            <div class="event">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 5">
-                <h3>Сеанс настольных игр</h3>
-                <p>Записались: 15</p>
-            </div>
-            <div class="event">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 6">
-                <h3>Сеанс настольных игр</h3>
-                <p>Записались: 25</p>
-            </div>
-            <div class="event">
-                <img src="../fonts/play.jpeg" alt="Мероприятие 7">
-                <h3>Сеанс настольных игр</h3>
-                <p>Записались: 30</p>
-            </div>-->
         </div>
     </div>
 </body>

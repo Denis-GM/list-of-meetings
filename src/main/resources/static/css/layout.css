@@ -14,7 +14,7 @@
     user-select: none;
 }
 
-a:hover {
+.nav a:hover {
     border-bottom: 1px solid #2E2E2E;
 }
 
