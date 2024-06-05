@@ -30,8 +30,12 @@
         <!-- Блоки для количества мест -->
         <div class="row">
             <div class="col-sm-4 box">
+                <h5>Место</h5>
+                <input type="number" name="place" data-th-text="${payload?.place}" class="form-control" placeholder="Место">
+            </div>
+            <div class="col-sm-4 box">
                 <h5>Всего мест</h5>
-                <input type="number" data-th-text="${payload?.place}" class="form-control" placeholder="Количество мест">
+                <input type="number" name="totalNumberSeats" data-th-text="${payload?.totalNumberSeats}" class="form-control" placeholder="Количество мест">
             </div>
             <div class="col-sm-4 d-flex align-items-center">
                 <button class="btn btn-success btn-block">Создать</button>

@@ -41,14 +41,15 @@ public class SubscriptionService {
         meetingRepository.save(meeting);
     }
 
-//    public void deleteSubscription(String id) {
-//        var sub = subscriptionRepository.findById(UUID.fromString(id));
-//        subscriptionRepository.deleteById(UUID.fromString(id));
-//    }
-
-    public void deleteSubscription(Subscription subscription, Meeting meeting) {
-        subscriptionRepository.delete(subscription);
-        meeting.incrementAvailableSeat();
-        meetingRepository.save(meeting);
+    public void deleteSubscription(String id) {
+        var sub = subscriptionRepository.findById(UUID.fromString(id))
+                .stream().findFirst().orElse(null);
+        subscriptionRepository.deleteById(UUID.fromString(id));
     }
+
+//    public void deleteSubscription(Subscription subscription, Meeting meeting) {
+//        subscriptionRepository.delete(subscription);
+//        meeting.incrementAvailableSeat();
+//        meetingRepository.save(meeting);
+//    }
 }

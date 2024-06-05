@@ -73,10 +73,9 @@ public class MeetingController {
             Meeting meeting = new Meeting(
                     payload.title(),
                     payload.details(),
-//                    payload.date(),
                     new Date(),
-                    payload.place()
-                    ,payload.totalNumberSeats(),
+                    payload.place(),
+                    payload.totalNumberSeats(),
                     currentUser);
             this.meetingService.addMeeting(meeting);
             return "redirect:/";

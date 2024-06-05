@@ -73,12 +73,12 @@ public class SubscriptionController {
                 }
             }
             if(isSubscribed) {
-//                subscriptionService.deleteSubscription(subscriptionId);
-//                meeting.incrementAvailableSeat();
-//                meetingService.updateMeeting(meeting);
-                Subscription sub = subscriptionService.getSubscriptionById(subscriptionId)
-                        .stream().findFirst().orElse(null);
-                subscriptionService.deleteSubscription(sub, meeting);
+                subscriptionService.deleteSubscription(subscriptionId);
+                meeting.incrementAvailableSeat();
+                meetingService.updateMeeting(meeting);
+//                Subscription sub = subscriptionService.getSubscriptionById(subscriptionId)
+//                        .stream().findFirst().orElse(null);
+//                subscriptionService.deleteSubscription(sub, meeting);
             }
         }
         return "redirect:/meetings/{meetingId}";
