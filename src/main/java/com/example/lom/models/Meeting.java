@@ -1,6 +1,7 @@
 package com.example.lom.models;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.Set;
@@ -14,6 +15,9 @@ public class Meeting {
     private UUID id;
     private String name;
     private String description;
+
+//    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;
     private String place;
     private int totalNumberSeats;

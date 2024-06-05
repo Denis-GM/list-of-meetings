@@ -18,7 +18,7 @@
             <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
         </ul>
     </div>
-    <form method="post" data-th-action="@{/tests/create}">
+    <form method="post" data-th-action="@{/meetings/create}">
         <label>
             Название:<br>
             <input type="text" name="title" data-th-value="${payload?.title}">
@@ -29,7 +29,8 @@
         </label><br>
         <label>
             Во скока?:<br>
-            <textarea name="date" data-th-text="${payload?.date}"></textarea>
+            <!-- <input type="date" pattern="yyyy-MM-dd" name="date" data-th-text="${payload?.date}" /> -->
+            <input id="date-input" type="date" name="date" data-th-text="${payload?.date}" />
         </label><br>
         <label>
             Где?:<br>
@@ -43,5 +44,8 @@
         <button type="submit">Создать</button>
     </form>
 </div>
+<script>
+    document.getElementById('date-input').valueAsDate = new Date();
+</script>
 </body>
 </html>
