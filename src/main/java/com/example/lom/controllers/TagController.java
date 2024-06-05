@@ -11,16 +11,18 @@ import java.util.List;
 
 @RestController
 public class TagController {
+
     private final TagService tagService;
 
     @Autowired
     public TagController(TagService tagService) {
         this.tagService = tagService;
+//        this.tagService.assignTagToMeeting("236777b0-ccd2-4fa7-b48c-c4dd7e332a58", "sports");
     }
 
-    @GetMapping("/api/tags/{tagName}")
-    public Tag addTag(@PathVariable String tagName) {
-        return this.tagService.saveTag(new Tag(tagName));
+    @GetMapping("/api/tags/{tagName}/{fullName}")
+    public Tag addTag(@PathVariable String tagName, @PathVariable String fullName) {
+        return this.tagService.saveTag(new Tag(tagName, fullName));
     }
 
     @GetMapping("/api/tags")

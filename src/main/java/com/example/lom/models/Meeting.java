@@ -33,7 +33,13 @@ public class Meeting {
             fetch = FetchType.LAZY)
     private Set<Subscription> subscriptions;
 
-//    private int tags;
+    @ManyToMany
+    @JoinTable(
+            name = "tags",
+            joinColumns = @JoinColumn(name = "meeting_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
+
     public Meeting() { }
 
     public Meeting(String name, String description, Date date, String place, int totalNumberSeats, User creator) {
@@ -120,5 +126,13 @@ public class Meeting {
 
     public void setSubscriptions(Set<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }

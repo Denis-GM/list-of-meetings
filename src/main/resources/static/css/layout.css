@@ -64,7 +64,8 @@
     position: relative;
     width: 40%;
     display: flex;
-    justify-content: space-between;
+    gap: 70px;
+    /* justify-content: space-between; */
 }
 
 .nav__right-block {

@@ -44,12 +44,10 @@ public class SubscriptionService {
     public void deleteSubscription(String id) {
         var sub = subscriptionRepository.findById(UUID.fromString(id))
                 .stream().findFirst().orElse(null);
-        subscriptionRepository.deleteById(UUID.fromString(id));
+        if(sub != null){
+            sub.setMeeting(null);
+            sub.setUser(null);
+            subscriptionRepository.delete(sub);
+        }
     }
-
-//    public void deleteSubscription(Subscription subscription, Meeting meeting) {
-//        subscriptionRepository.delete(subscription);
-//        meeting.incrementAvailableSeat();
-//        meetingRepository.save(meeting);
-//    }
 }

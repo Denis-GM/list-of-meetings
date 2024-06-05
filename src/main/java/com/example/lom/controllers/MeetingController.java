@@ -36,6 +36,21 @@ public class MeetingController {
         this.subscriptionService = subscriptionService;
     }
 
+    @GetMapping("/")
+    public String indexSearch(@RequestParam(value = "search", defaultValue = "") String name,
+                              @RequestParam(value = "tag", defaultValue = "") String tag, Model model) {
+        var meetings = meetingService.getMeetings();
+        if(name != ""){
+            meetings = meetings.stream()
+                    .filter(meeting -> meeting.getName().toLowerCase().contains(name.toLowerCase()))
+                    .toList();
+        }
+        model.addAttribute("searchText", name);
+        model.addAttribute("searchTag", tag);
+        model.addAttribute("meetings", meetings);
+        return "index";
+    }
+
     @GetMapping("/{id}")
     public String meetingPage(Model model, @PathVariable String id, Authentication authentication) {
         User currentUser  = userService.getUserByUsername(authentication.getName());

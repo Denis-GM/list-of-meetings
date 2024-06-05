@@ -34,11 +34,9 @@ public class TemplateController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = { "/", }, method = RequestMethod.GET)
-    public String index(Model model) {
-        var meetings = meetingService.getMeetings();
-        model.addAttribute("meetings", meetings);
-        return "index";
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/meetings/";
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
