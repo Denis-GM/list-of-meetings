@@ -11,6 +11,14 @@
     <div th:include="layout :: copy"></div>
     <form class="content" method="post" data-th-action="@{/meetings/create}">
         <div class="container">
+
+            <div data-th-if="${errors}">
+                <h2>Допущены ошибки</h2>
+                <ul>
+                    <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+                </ul>
+            </div>
+
             <input
                 class="back-button"
                 action="action"
@@ -49,7 +57,7 @@
                 </div>
                 <div class="col-sm-4 custom-box">
                     <h5>Осталось мест</h5>
-                    <input type="number" name="avaiableSeats" min="0" data-th-text="${payload?.avaiableSeats}" class="form-control" placeholder="0">
+                    <input type="number" name="availableSeats" min="0" data-th-text="${payload?.availableSeats}" class="form-control" placeholder="0">
                 </div>
                 <div class="col-sm-4 d-flex align-items-center justify-content-center custom-box">
                     <button class="btn btn-success btn-block create-button">Создать</button>
