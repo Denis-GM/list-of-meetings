@@ -31,7 +31,11 @@
         <div class="row">
             <div class="col-sm-4 box">
                 <h5>Место</h5>
-                <input type="number" name="place" data-th-text="${payload?.place}" class="form-control" placeholder="Место">
+                <input type="text" name="place" data-th-text="${payload?.place}" class="form-control" placeholder="Место">
+            </div>
+            <div>
+                <h5>Во скока?:</h5>
+                <input name="date" data-th-text="${payload?.date}" class="form-control" placeholder="Дата"></input>
             </div>
             <div class="col-sm-4 box">
                 <h5>Всего мест</h5>

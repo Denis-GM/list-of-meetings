@@ -17,7 +17,7 @@ public class Meeting {
     private String description;
 
 //    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+/*    @DateTimeFormat(pattern="yyyy-MM-dd")*/
     private Date date;
     private String place;
     private int totalNumberSeats;
