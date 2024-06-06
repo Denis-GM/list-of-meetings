@@ -2,6 +2,7 @@ package com.example.lom.models;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,8 +15,8 @@ public class Tag {
     private String name;
     private String fullName;
 
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-    private Set<Meeting> meetings;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
+    private Set<Meeting> meetings = new HashSet<Meeting>();
 
     public Tag() { }
 
@@ -46,5 +47,13 @@ public class Tag {
 
     public void setMeetings(Set<Meeting> meetings) {
         this.meetings = meetings;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

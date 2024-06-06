@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/subscriptions")
 public class SubscriptionController {
 
-    private final MeetingController meetingController;
-
     private final SubscriptionRepository subscriptionRepository;
 
     private final SubscriptionService subscriptionService;
@@ -28,12 +26,10 @@ public class SubscriptionController {
 
     @Autowired
     public SubscriptionController(
-            MeetingController meetingController,
             SubscriptionService subscriptionService,
             SubscriptionRepository subscriptionRepository,
             MeetingService meetingService,
             UserService userService) {
-        this.meetingController = meetingController;
         this.subscriptionRepository = subscriptionRepository;
         this.subscriptionService = subscriptionService;
         this.meetingService = meetingService;

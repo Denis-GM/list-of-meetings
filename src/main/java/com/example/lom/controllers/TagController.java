@@ -17,7 +17,6 @@ public class TagController {
     @Autowired
     public TagController(TagService tagService) {
         this.tagService = tagService;
-//        this.tagService.assignTagToMeeting("236777b0-ccd2-4fa7-b48c-c4dd7e332a58", "sports");
     }
 
     @GetMapping("/api/tags/{tagName}/{fullName}")

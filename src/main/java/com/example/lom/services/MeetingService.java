@@ -22,11 +22,11 @@ public class MeetingService {
         this.meetingRepository = meetingRepository;
         this.userService = userService;
 
-        User user = this.userService.getUserByUsername("denis");
+//        User user = this.userService.getUserByUsername("denis");
 //        this.meetingRepository.saveAll(List.of(
-//                new Meeting("Настольная игра 1", "Описание 1", new Date(), "Екатеринбург", 6, user),
-//                new Meeting("Настольная игра 2", "Описание 2", new Date(), "Екатеринбург", 4, user),
-//                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург", 12, user)
+//                new Meeting("Настольная игра 1", "Описание 1", new Date(), "Екатеринбург",6, 6, user),
+//                new Meeting("Настольная игра 2", "Описание 2", new Date(), "Екатеринбург",4, 4, user),
+//                new Meeting("Настольная игра 3", "Описание 3", new Date(), "Екатеринбург",12, 12, user)
 //        ));
     }
 

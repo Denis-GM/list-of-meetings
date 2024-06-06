@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -31,12 +32,11 @@ public class Meeting {
             fetch = FetchType.LAZY)
     private Set<Subscription> subscriptions;
 
-    @ManyToMany
-    @JoinTable(
-            name = "tags",
-            joinColumns = @JoinColumn(name = "meeting_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private Set<Tag> tags;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "meeting__tags",
+            joinColumns = { @JoinColumn(name = "meeting_id") },
+            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
+    private Set<Tag> tags = new HashSet<Tag>();;
 
     public Meeting() { }
 
@@ -132,5 +132,19 @@ public class Meeting {
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+        tag.getMeetings().add(this);
+    }
+
+    public void removeTag(String tagId) {
+        Tag tag = this.tags.stream().filter(t -> t.getId().toString().equals(tagId))
+                .findFirst().orElse(null);
+        if (tag != null) {
+            this.tags.remove(tag);
+            tag.getMeetings().remove(this);
+        }
     }
 }

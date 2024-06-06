@@ -8,17 +8,20 @@
     <title>LOM</title>
 </head>
 <body>
-<a th:href="@{/meetings/edit/__${meeting.id}__}">Изменить</a>
     <div th:include="layout :: copy"></div>
     <main class="content">
         <div class="container">
-            <input 
-                class="back-button"
-                action="action"
-                onclick="window.history.go(-1); return false;"
-                type="submit"
-                value="Назад"
-            />
+            <div style="display: flex; gap: 10%;">
+                <input
+                    class="back-button"
+                    action="action"
+                    onclick="window.history.go(-1); return false;"
+                    type="submit"
+                    value="Назад"
+                />
+                <a th:href="@{/meetings/edit/__${meeting.id}__}"
+                class="back-button">Изменить</a>
+            </div>
             <ul class="meeting list-reset">
                 <li class="meeting-image-container">
                     <img src="../img/play.jpeg" class="meeting-image" alt="Мероприятие">
@@ -64,6 +67,10 @@
                         th:method="delete" class="meeting-info-seats__el meeting-info-seats__subscribe" >
                         <button type="submit" class="btn-delete-meeting" id="submitButton">Удалить мероприятие</button>
                     </form>
+                </li>
+                <li><h5>Теги</h5></li>
+                <li class="tags" th:each="tag : ${tags}">
+                    <dev class="tag-button" th:text="${tag.fullName}"></dev>
                 </li>
             </ul>
         </div>

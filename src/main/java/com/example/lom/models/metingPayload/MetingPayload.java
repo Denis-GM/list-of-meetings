@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.Date;
+import java.util.List;
 
 public record MetingPayload(
         @NotNull
@@ -14,12 +15,12 @@ public record MetingPayload(
         @Size(min = 3,max = 10 , message = "Содержание должно быть от 3 до 10 символов")
         String details,
 
-        @NotNull(message = "Эу, дату постовь")
+        @NotNull(message = "Нет даты")
         Date date,
 
         String place,
 
-        @NotNull(message = "Людей-то скока А-Л-О???")
+        @NotNull(message = "Укажите оставшееся кол-во мест")
         int totalNumberSeats,
 
         @NotNull(message = "Укажите оставшееся кол-во мест")

@@ -25,7 +25,6 @@ public class TagService {
         this.tagRepository = tagRepository;
 
 //        this.tagRepository.saveAll(List.of(
-//                new Tag("all", "Все мероприятия"),
 //                new Tag("games", "Игры"),
 //                new Tag("sports", "Спорт"),
 //                new Tag("big-team", "Большая компания"),
@@ -46,9 +45,17 @@ public class TagService {
         Meeting meeting = meetingService.getMeetingById(idMeeting).stream().findFirst().orElse(null);
         Tag tag = tagRepository.findByName(tagName);
         if(meeting != null && tag != null) {
-            Set<Tag> tags = new HashSet<Tag>(meeting.getTags());
-            tags.add(tag);
-            meeting.setTags(tags);
+            meeting.addTag(tag);
+            this.meetingService.updateMeeting(meeting);
+        }
+    }
+
+    public  void  unassignTagToMeeting(String idMeeting, String tagName) {
+        Meeting meeting = meetingService.getMeetingById(idMeeting).stream().findFirst().orElse(null);
+        Tag tag = tagRepository.findByName(tagName);
+        if(meeting != null && tag != null) {
+            meeting.removeTag(tag.getId().toString());
+            this.meetingService.updateMeeting(meeting);
         }
     }
 }

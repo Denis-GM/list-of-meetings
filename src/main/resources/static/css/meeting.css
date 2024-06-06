@@ -124,3 +124,26 @@
     font-size: 18px;
     cursor: pointer;
 }
+
+h5 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.tags {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.tag-button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: var(--main-red);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}

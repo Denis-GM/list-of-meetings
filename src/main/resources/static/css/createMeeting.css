@@ -237,6 +237,10 @@ h5 {
     transition: background-color 0.3s ease;
 }
 
+.tag-button__input:hover .tag-button {
+    background-color: #F76D6D;
+}
+
 .tag-button.selected {
     background-color: #F76D6D;
 }

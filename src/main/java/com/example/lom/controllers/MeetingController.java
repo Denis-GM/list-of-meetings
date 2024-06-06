@@ -1,14 +1,16 @@
 package com.example.lom.controllers;
 
+import com.example.lom.models.Tag;
 import com.example.lom.models.metingPayload.MetingPayload;
 import com.example.lom.models.Meeting;
 import com.example.lom.models.Subscription;
 import com.example.lom.models.User;
 import com.example.lom.models.metingPayload.UpdateMetingPayload;
+import com.example.lom.repositories.TagRepository;
 import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
+import com.example.lom.services.TagService;
 import com.example.lom.services.UserService;
-import jakarta.validation.Payload;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
@@ -31,20 +32,33 @@ public class MeetingController {
 
     private final SubscriptionService subscriptionService;
 
+    private final TagRepository tagRepository;
+
+    private final TagService tagService;
+
     @Autowired
-    public MeetingController(MeetingService meetingService, UserService userService, SubscriptionService subscriptionService) {
+    public MeetingController(MeetingService meetingService, UserService userService,
+                             SubscriptionService subscriptionService, TagRepository tagRepository,
+                             TagService tagService){
         this.meetingService = meetingService;
         this.userService = userService;
         this.subscriptionService = subscriptionService;
+        this.tagRepository = tagRepository;
+        this.tagService = tagService;
     }
 
     @GetMapping("/")
     public String indexSearch(@RequestParam(value = "search", defaultValue = "") String name,
-                              @RequestParam(value = "tag", defaultValue = "") String tag, Model model) {
+                              @RequestParam(value = "tag", defaultValue = "all") String tag, Model model) {
         var meetings = meetingService.getMeetings();
-        if(name != ""){
+        if(!name.isEmpty()){
             meetings = meetings.stream()
                     .filter(meeting -> meeting.getName().toLowerCase().contains(name.toLowerCase()))
+                    .toList();
+        }
+        if(!tag.equals("all")){
+            meetings = meetings.stream()
+                    .filter(meeting -> meeting.getTags().contains(tagRepository.findByName(tag)))
                     .toList();
         }
         model.addAttribute("searchText", name);
@@ -59,14 +73,19 @@ public class MeetingController {
 
         boolean isCreator = false;
         Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);
-        if(meeting != null)
+        if(meeting != null) {
             isCreator= meeting.getCreator().equals(currentUser);
-        Subscription subscription = this.subscriptionService.getSubscriptionByUserAndMeeting(currentUser, meeting).stream().findFirst().orElse(null);
+            Set<Tag> tag = meeting.getTags();
+            Subscription subscription = this.subscriptionService.getSubscriptionByUserAndMeeting(currentUser, meeting).stream().findFirst().orElse(null);
 
-        model.addAttribute("meeting", meeting);
-        model.addAttribute("isCreator", isCreator);
-        model.addAttribute("subscription", subscription);
-        return "meeting";
+            model.addAttribute("subscription", subscription);
+            model.addAttribute("meeting", meeting);
+            model.addAttribute("isCreator", isCreator);
+            model.addAttribute("tags", tag);
+
+            return "meeting";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/create")
