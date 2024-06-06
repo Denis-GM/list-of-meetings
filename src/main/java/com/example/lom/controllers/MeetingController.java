@@ -84,11 +84,11 @@ public class MeetingController {
         User currentUser  = userService.getUserByUsername(authentication.getName());
 
         boolean isCreator = false;
-        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);
+        Meeting meeting = meetingService.getMeetingById(id).orElse(null);
         if(meeting != null) {
             isCreator= meeting.getCreator().equals(currentUser);
             Set<Tag> tag = meeting.getTags();
-            Subscription subscription = this.subscriptionService.getSubscriptionByUserAndMeeting(currentUser, meeting).stream().findFirst().orElse(null);
+            Subscription subscription = this.subscriptionService.getSubscriptionByUserAndMeeting(currentUser, meeting).orElse(null);
 
             model.addAttribute("subscription", subscription);
             model.addAttribute("meeting", meeting);
