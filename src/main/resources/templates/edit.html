@@ -10,7 +10,7 @@
 </head>
 <body>
 <div th:include="layout :: copy"></div>
-<form class="content" method="post" data-th-action="@{/meetings/edit/__${meeting.id}__}">
+<form class="content" method="post" th:action="@{/meetings/edit/__${meeting.id}__}">
     <a href="/" class="btn btn-primary mb-3">Назад</a>
 
     <!-- Блок для загрузки изображения -->
@@ -22,9 +22,9 @@
     <!-- Блок для ввода названия и описания -->
     <div class="box">
         <h5>Введите название</h5>
-        <input type="text" name="title" data-th-value="${payload != null ? payload.title : meeting.title}" class="form-control" placeholder="Название мероприятия">
+        <input type="text" name="title" data-th-value="${payload != null ? payload.title : meeting.name}" class="form-control" placeholder="Название мероприятия">
         <h5 class="mt-3">Введите описание</h5>
-        <textarea name="details" data-th-text="${payload != null ? payload.details : meeting.details}" class="form-control" rows="3" placeholder="Введите описание"></textarea>
+        <textarea name="description" data-th-text="${payload != null ? payload.details : meeting.description}" class="form-control" rows="3" placeholder="Введите описание"></textarea>
     </div>
 
     <!-- Блоки для количества мест -->

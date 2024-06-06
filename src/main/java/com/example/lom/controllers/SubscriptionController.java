@@ -46,7 +46,7 @@ public class SubscriptionController {
         Meeting meeting = this.meetingService.getMeetingById(meetingId).stream().findFirst()
                 .orElse(null);
 
-        if(meeting != null && !meeting.getCreator().equals(user)) {
+        if(meeting != null && !meeting.getCreator().equals(user) && meeting.getAvailableSeats() > 0) {
             if(!this.subscriptionRepository.existsSubscriptionByUserAndMeeting(user, meeting)) {
                 var subscription = new Subscription(user, meeting);
                 this.subscriptionService.createSubscription(subscription, meeting);
@@ -76,9 +76,6 @@ public class SubscriptionController {
                 subscriptionService.deleteSubscription(subscriptionId);
                 meeting.incrementAvailableSeat();
                 meetingService.updateMeeting(meeting);
-//                Subscription sub = subscriptionService.getSubscriptionById(subscriptionId)
-//                        .stream().findFirst().orElse(null);
-//                subscriptionService.deleteSubscription(sub, meeting);
             }
         }
         return "redirect:/meetings/{meetingId}";

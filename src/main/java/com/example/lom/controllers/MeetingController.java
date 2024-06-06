@@ -114,17 +114,25 @@ public class MeetingController {
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-    public String meetingEditPage(Model model, @PathVariable String id) {
-        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);;
+    public String meetingEditPage(@PathVariable String id, Authentication authentication, Model model) {
+        User currentUser  = userService.getUserByUsername(authentication.getName());
+        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);
         model.addAttribute("meeting", meeting);
+        if (meeting == null || !meeting.getCreator().equals(currentUser))
+            return "redirect:/";
         return "edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateMeeting(@ModelAttribute(value = "meeting", binding = false) Meeting meting, @PathVariable String id,Authentication authentication,@Valid UpdateMetingPayload payload,
+    public String updateMeeting(@PathVariable String id,
+                                Authentication authentication, @Valid UpdateMetingPayload payload,
                                 BindingResult bindingResult, Model model) {
         User currentUser  = userService.getUserByUsername(authentication.getName());
-        if (bindingResult.hasErrors()) {
+        Meeting meeting = meetingService.getMeetingById(id).stream().findFirst().orElse(null);
+        if(meeting == null) {
+            return "redirect:/";
+        }
+        else if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()
                     .map(ObjectError::getDefaultMessage)
@@ -132,8 +140,8 @@ public class MeetingController {
             return "meetings/edit/{id}";
         }
         else {
-                this.meetingService.updateMeeting(meting);
-                return "redirect:/meetings/{id}".formatted(meting.getId());
+                this.meetingService.updateMeeting(meeting);
+                return "redirect:/meetings/{id}".formatted(meeting.getId());
 
         }
     }
