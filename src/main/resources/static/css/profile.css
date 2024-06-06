@@ -1,0 +1,145 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 20px;
+}
+
+.user-info {
+    font-size: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    visibility: visible;
+}
+
+.name-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#user-last-name,
+#user-first-name {
+    margin-bottom: 10px;
+}
+
+#edit-button {
+    width: 248px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 1px 16.7px 0px rgba(0, 0, 0, 0.25);
+    background: rgb(255, 255, 255);
+    font-size: 25px;
+    font-family: "Jura", sans-serif;
+}
+
+.edit-form {
+    visibility: hidden;
+    /* display: none; */
+}
+
+.edit-field {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 20px;
+    padding:10px;
+    font-family: "Jura", sans-serif;
+    font-size: 25px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    color: #444444;
+}
+
+.rectangle {
+    width: 706px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: rgb(247, 109, 109);
+    padding: 10px;
+    margin: 80px auto 50px;
+}
+
+.rectangle h2 {
+    color: white;
+    font-size: 25px;
+    margin: 0;
+}
+
+.subscriptions,
+.my-events {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.subscription, 
+.my-event {
+    width: 25%;
+}
+
+.rec {
+    width: 340px;
+    height: 230px;
+    background-color: lightblue;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.event {
+    width: 340px;
+    height: 250px;
+    background-color: lightblue;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.rec img,
+.event img {
+    width: 340px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0;
+}
+
+.rec h3,
+.event h3 {
+    display: inline-block;
+    background-color: white;
+    font-size: 25px;
+    margin: -3px auto 0;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.event p {
+    font-size: 20px;
+    margin: 10px auto auto;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url("../fonts/Jura-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}

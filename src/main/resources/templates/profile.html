@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/profile.css}" rel="stylesheet" />
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <title>Профиль пользователя</title>
+</head>
+<body>
+    <div th:include="layout :: copy"></div>
+    <div class="content">
+        <!-- Блок с информацией о пользователе -->
+        <div id="user-info" class="user-info">
+            <div>
+                <div id="name-info">
+                    <span id="user-last-name" th:text="${user.lastName}">Фамилия</span>
+                    <input type="text" id="last-name-input" style="display: none;">
+                </div>
+                <div>
+                    <span id="user-first-name" th:text="${user.firstName}">Имя</span>
+                    <input type="text" id="first-name-input" style="display: none;">
+                </div>
+            </div>
+
+            <div>
+                <span id="user-phone" th:text="${user.phone}">Телефон</span>
+                <input type="text" id="phone-input" style="display: none;">
+            </div>
+
+            <button id="edit-button" onclick="editProfile()">Редактировать</button>
+            <button id="save-button" style="display: none;">Сохранить</button>
+        </div>
+
+        <form id="edit-form" class="edit-form" th:action="@{/profile/edit}" method="post">
+            <input type="text" class="edit-field surname" id="last-name-form" name="lastName" placeholder="Фамилия">
+            <input type="text" class="edit-field name" id="first-name-form" name="firstName" placeholder="Имя">
+            <input type="text" class="edit-field phone" id="phone-form" name="phone" placeholder="Номер телефона">
+            <button type="submit" class="edit-field">Сохранить</button>
+        </form>
+
+        <div class="rectangle">
+            <h2>Записи</h2>
+        </div>
+
+        <div class="subscriptions">
+            <div class="subscription" th:each="subscription : ${userSubscriptions}">
+                <a th:href="@{/meetings/__${subscription.meeting.id}__}">
+                    <div class="rec">
+                        <img th:src="${subscription.meeting.imageUrl}" alt="Мероприятие" th:alt="${subscription.meeting.name}">
+                        <h3 th:text="${subscription.meeting.name}">Название мероприятия</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="rectangle">
+            <h2>Мои мероприятия</h2>
+        </div>
+
+        <div class="my-events">
+            <div class="my-event" th:each="meeting : ${userMeetings}">
+                <a th:href="@{/meetings/__${meeting.id}__}">
+                    <div class="event">
+                        <img th:src="${meeting.imageUrl}" alt="Мероприятие" th:alt="${meeting.name}">
+                        <h3 th:text="${meeting.name}">Название мероприятия</h3>
+<!--                    <-- availableSeats исправить -->
+                        <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/js/profile.js}"></script>
+</html>

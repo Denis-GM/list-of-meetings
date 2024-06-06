@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+    <link th:href="@{/css/createMeeting.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <title>Создание мероприятия</title>
+</head>
+<body>
+    <div th:include="layout :: copy"></div>
+    <form class="content" method="post" enctype="multipart/form-data" data-th-action="@{/meetings/create}">
+        <div class="container">
+
+            <div data-th-if="${errors}">
+                <h2>Допущены ошибки</h2>
+                <ul>
+                    <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+                </ul>
+            </div>
+
+            <input
+                class="back-button"
+                action="action"
+                onclick="window.history.go(-1); return false;"
+                type="submit"
+                value="Назад"
+            />
+
+            <div class="pic-select">
+                <img src="../img/camera.png" class="camera-image" alt="Фотоаппарат">
+                <label class="open-file">
+                    Выбрать файл
+                    <input type="file" name="image" style="display: none;">
+                </label>
+            </div>
+
+            <div class="box">
+                <div class="box-header">
+                    <input type="text" name="title" data-th-value="${payload?.title}" class="form-control meeting-name" placeholder="Введите название мероприятия">
+                </div>
+                <textarea name="details" data-th-text="${payload?.details}" class="form-control meeting-desc" rows="3" placeholder="Введите описание"></textarea>
+            </div>
+
+            <div class="box-other">
+                <input type="text" name="place" data-th-text="${payload?.place}" class="form-control meeting-details" placeholder="Место проведения">
+            </div>
+
+            <div class="box-other">
+                <input name="date" data-th-text="${payload?.date}" class="form-control meeting-details" placeholder="Дата и время в формате DD/MM/YYYY HH:MM"></input>
+            </div>
+
+            <div class="row custom-row">
+                <div class="col-sm-4 custom-box">
+                    <h5>Всего мест</h5>
+                    <input type="number" name="totalNumberSeats" min="0" data-th-text="${payload?.totalNumberSeats}" class="form-control" placeholder="0">
+                </div>
+                <div class="col-sm-4 custom-box">
+                    <h5>Осталось мест</h5>
+                    <input type="number" name="availableSeats" min="0" data-th-text="${payload?.availableSeats}" class="form-control" placeholder="0">
+                </div>
+                <div class="col-sm-4 d-flex align-items-center justify-content-center custom-box">
+                    <button class="btn btn-success btn-block create-button">Создать</button>
+                </div>
+            </div>
+
+            <h5>Теги</h5>
+
+            <div class="tags">
+                
+                <button class="tag-button" type="button" value="games">
+                    <input class="tag-button__input" type="checkbox" id="scales" name="tags" value="games" />
+                    Игры
+                </button>
+                <button class="tag-button" type="button" value="sports">
+                    <input class="tag-button__input" type="checkbox" id="scales" name="tags" value="sports" />
+                    Спорт
+                </button>
+                <button class="tag-button" type="button" value="big-team">
+                    <input  class="tag-button__input" type="checkbox" id="scales" name="tags" value="big-team" />
+                    Большая компания
+                </button>
+                <button class="tag-button" type="button" value="little-team">
+                    <input  class="tag-button__input" type="checkbox" id="scales" name="tags" value="little-team" />
+                    Маленькая компания
+                </button>
+                <button class="tag-button" type="button" value="outside">
+                    <input  class="tag-button__input" type="checkbox" id="scales" name="tags" value="outside" />
+                    На открытом воздухе
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" th:src="@{/js/createMeeting.js}"></script>
+</html>

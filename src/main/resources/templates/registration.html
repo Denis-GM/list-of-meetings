@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Регистрация</title>
+    <link th:href="@{/css/registration.css}" rel="stylesheet" />
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h4 class="form__h">Регистрация</h4>
+            <form class="form__body" th:action="@{/registration}" method="post">
+                <div>
+                    <label> Фамилия: </label>
+                    <input type="text" name="lastName"/>
+                </div>
+                <div>
+                    <label> Имя: </label>
+                    <input type="text" name="firstName"/> 
+                </div>
+                <div>
+                    <label> Номер телефона: </label>
+                    <input type="text" name="phone"/>
+                </div>
+                <div>
+                    <label> Email: </label>
+                    <input type="email" name="email"/> 
+                </div>
+        
+                <div>
+                    <label> Логин: </label>
+                    <input type="text" name="username" required/>
+                </div>
+                <div>
+                    <label> Пароль: </label>
+                    <input type="password" name="password" required/>
+                </div>
+
+                <div th:if="${message}">
+                    <div th:text="${message}"></div>
+                </div>
+
+                <div><input type="submit" value="Зарегистрироваться"/></div>
+                <div><a href="/login">Уже есть аккаунт?</a></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

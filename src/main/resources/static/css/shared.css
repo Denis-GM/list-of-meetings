@@ -1,0 +1,40 @@
+:root {
+    --main-red: #F76D6D;
+    --main-blue: #A8D1E7;
+    --main-gray: #444444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Jura", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 1080px;
+    width: 70%;
+    margin: 30px auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-reset {
+    text-decoration: none;
+    list-style: none;
+}
+
+@font-face {
+    font-family: "Jura";
+    src: url("../fonts/Jura-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

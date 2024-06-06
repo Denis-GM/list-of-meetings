@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/shared.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+    <title>LOM</title>
+</head>
+<body>
+<div th:include="layout :: copy"></div>
+<div class="content">
+
+   <!-- <div class="rectangle">
+       <h2>Все мероприятия</h2>
+   </div> -->
+
+    <header class="header">
+        <form th:method="get" class="header__block">
+
+            <select name="tag" class="header__block" id="filter-select">
+                    <option value="all">Все мероприятия</option>
+                    <option value="games">Игры</option>
+                    <option value="sports">Спорт</option>
+                    <option value="big-team">Большая компания</option>
+                    <option value="little-team">Маленькая компания</option>
+                    <option value="outside">На открытом воздухе</option>
+            </select>
+
+            <div class="search">
+                <label class="search__lable" for="site-search">Поиск:</label>
+                <input th:value="${searchText}" class="search__input" type="search" id="site-search" name="search" />
+            </div>
+
+            <button class="btn-apply" type="submit">Принять</button>
+            <!-- <button class="btn-apply" type="reset">Сбросить</button> -->
+        </form>
+    </header>
+
+    <main>
+        <div class="events-grid">
+            <ul class="events-grid">
+                <li class="event" th:each="meeting : ${meetings}">
+                    <a th:href="@{/meetings/__${meeting.id}__}">
+                        <img th:src="${meeting.imageUrl}" alt="Мероприятие" th:alt="${meeting.name}">
+                        <h3 th:text="${meeting.name}"></h3>
+                        <p th:text="'Свободно мест: ' + ${meeting.availableSeats}"></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</html>

@@ -1,0 +1,40 @@
+.container {
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.form__h {
+    text-align: center;
+    padding: 15px 0 15px;
+
+    color: white;
+    background-color: #23315F;
+
+    border-radius: 10px 10px 0 0;
+}
+
+.form__body {
+    margin-top: 10px;
+    padding: 0 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.form label {
+    display: block;
+}
