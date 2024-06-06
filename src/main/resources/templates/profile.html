@@ -33,10 +33,10 @@
         </div>
 
         <form id="edit-form" class="edit-form" th:action="@{/profile/edit}" method="post">
-            <input type="text" id="last-name-form" name="lastName">
-            <input type="text" id="first-name-form" name="firstName">
-            <input type="text" id="phone-form" name="phone">
-            <button type="submit">Сохранить</button>
+            <input type="text" class="edit-field surname" id="last-name-form" name="lastName" placeholder="Фамилия">
+            <input type="text" class="edit-field name" id="first-name-form" name="firstName" placeholder="Имя">
+            <input type="text" class="edit-field phone" id="phone-form" name="phone" placeholder="Номер телефона">
+            <button type="submit" class="edit-field">Сохранить</button>
         </form>
 
         <div class="rectangle">

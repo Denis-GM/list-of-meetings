@@ -44,14 +44,21 @@
 }
 
 .meeting-image-container {
-
+    width: 800px;
+    height: 370px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .meeting-image {
-    width: 100%;
-    height: 370px;
-    border-radius: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
+
 
 .meeting-info {
     display: flex;

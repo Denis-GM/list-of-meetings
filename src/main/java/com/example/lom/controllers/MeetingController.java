@@ -11,15 +11,24 @@ import com.example.lom.services.MeetingService;
 import com.example.lom.services.SubscriptionService;
 import com.example.lom.services.TagService;
 import com.example.lom.services.UserService;
+import jakarta.validation.Payload;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Controller
@@ -35,6 +44,9 @@ public class MeetingController {
     private final TagRepository tagRepository;
 
     private final TagService tagService;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @Autowired
     public MeetingController(MeetingService meetingService, UserService userService,
@@ -96,8 +108,10 @@ public class MeetingController {
 
     @PostMapping("/create")
     public String createMeeting(@Valid MetingPayload payload, BindingResult bindingResult,
-                                    Authentication authentication, Model model) {
+                                @RequestParam("image") MultipartFile imageFile,
+                                Authentication authentication, Model model) throws IOException {
         User currentUser  = userService.getUserByUsername(authentication.getName());
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()
@@ -106,6 +120,21 @@ public class MeetingController {
             return "createMeeting";
         }
         else {
+            String imageUrl = null;
+
+            if (imageFile != null && !imageFile.isEmpty()) {
+                String imgDirPath = Paths.get(uploadPath).toString();
+                File uploadDir = new File(imgDirPath);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs();
+                }
+
+                String uniqueFileName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
+                Path destinationPath = Paths.get(imgDirPath, uniqueFileName);
+                Files.copy(imageFile.getInputStream(), destinationPath);
+                imageUrl = "/img/" + uniqueFileName;
+            }
+
             Meeting meeting = new Meeting(
                     payload.title(),
                     payload.details(),
@@ -113,7 +142,9 @@ public class MeetingController {
                     payload.place(),
                     payload.totalNumberSeats(),
                     payload.availableSeats(),
-                    currentUser);
+                    currentUser
+            );
+            meeting.setImageUrl(imageUrl);
             this.meetingService.addMeeting(meeting);
             return "redirect:/";
         }

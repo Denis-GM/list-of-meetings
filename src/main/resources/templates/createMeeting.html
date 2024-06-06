@@ -9,7 +9,7 @@
 </head>
 <body>
     <div th:include="layout :: copy"></div>
-    <form class="content" method="post" data-th-action="@{/meetings/create}">
+    <form class="content" method="post" enctype="multipart/form-data" data-th-action="@{/meetings/create}">
         <div class="container">
 
             <div data-th-if="${errors}">
@@ -31,7 +31,7 @@
                 <img src="../img/camera.png" class="camera-image" alt="Фотоаппарат">
                 <label class="open-file">
                     Выбрать файл
-                    <input type="file" style="display: none;">
+                    <input type="file" name="image" style="display: none;">
                 </label>
             </div>
 

@@ -26,6 +26,8 @@ public class Meeting {
     @JoinColumn(name = "creator_id")
     private User creator;
 
+    private String imageUrl;
+
     @OneToMany(mappedBy = "meeting",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -117,6 +119,14 @@ public class Meeting {
     public User getCreator() { return creator; }
 
     public void setCreator(User creator) { this.creator = creator; }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public Set<Subscription> getSubscriptions() {
         return subscriptions;
